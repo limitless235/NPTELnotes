@@ -1,77 +1,146 @@
 # NPTELnotes
 
-Structured study notes for five NPTEL / SWAYAM cybersecurity and AI courses. Each course has its own folder with lecture-by-lecture markdown notes, companion index files, reference links, and PDF volumes grouped evenly across the full lecture count.
+A curated study-notes repository for **five NPTEL / SWAYAM courses** in cybersecurity, ethical hacking, and generative AI. Every lecture in each course is covered with structured markdown notes, companion index files, reference links, and printable PDF volumes.
+
+## What this project is
+
+NPTELnotes is a self-contained reference library — not a video mirror or course platform. It organizes publicly available lecture material into:
+
+- **Lecture-by-lecture notes** with key concepts, definitions, diagrams, and takeaways
+- **Volume PDFs** grouped so lectures divide evenly across the full course (e.g. 36 lectures → 4 PDFs × 9 lectures)
+- **Index files** beside each PDF volume for quick navigation
+- **Reference lists** with standards, tools, papers, and official documentation
+
+All video links point to public NPTEL, SWAYAM, or YouTube sources. No registration is required.
+
+## At a glance
+
+| | |
+|---|---|
+| **Courses** | 5 |
+| **Total lectures** | 210 |
+| **PDF volumes** | 22 |
+| **Formats** | Markdown (source) + PDF (export) |
 
 ## Courses
 
-| # | Course | Lectures | PDF volumes | Folder |
-|---|--------|----------|-------------|--------|
+| # | Course | Lectures | PDF split | Folder |
+|---|--------|----------|-----------|--------|
 | 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 | `courses/01-cyber-security-and-privacy/` |
 | 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 5 × 10 + 1 × 12 | `courses/02-ethical-hacking/` |
-| 3 | [Fundamentals of Generative AI and Large Language Models](courses/03-generative-ai-llms/) | 36 | 4 × 9 | `courses/03-generative-ai-llms/` |
-| 4 | [Cyber Security, Tools, Techniques and Counter Measures](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
-| 5 | [Information Security](courses/05-information-security-cec/) | 36 | 4 × 9 | `courses/05-information-security-cec/` |
+| 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 | 4 × 9 | `courses/03-generative-ai-llms/` |
+| 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
+| 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 | 4 × 9 | `courses/05-information-security-cec/` |
 
 ### Official course links
 
-1. **Cyber Security and Privacy** — https://nptel.ac.in/courses/106106248
-2. **Ethical Hacking** (NPT_4125) — https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs157
-3. **Fundamentals of Generative AI and LLMs** (NPT_4121) — https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs95
-4. **Cyber Security, Tools, Techniques and Counter Measures** — https://onlinecourses.swayam2.ac.in/e-learning/preview/nou26_ge86
-5. **Information Security** — https://onlinecourses.swayam2.ac.in/e-learning/preview/cec26_cs13
+| Course | URL |
+|--------|-----|
+| Cyber Security and Privacy | https://nptel.ac.in/courses/106106248 |
+| Ethical Hacking (NPT_4125) | https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs157 |
+| Generative AI & LLMs (NPT_4121) | https://onlinecourses.nptel.ac.in/e-learning/preview/noc26_cs95 |
+| Cyber Security Tools | https://onlinecourses.swayam2.ac.in/e-learning/preview/nou26_ge86 |
+| Information Security | https://onlinecourses.swayam2.ac.in/e-learning/preview/cec26_cs13 |
 
-## Repository layout
+## Project structure
 
 ```
-courses/
-  01-cyber-security-and-privacy/
-    README.md              # Course overview
-    lecture-index.md       # All lectures with video links
-    references.md          # Curated references
-    notes/                 # Volume markdown + .index.md companions
-    pdf/                   # Generated PDF volumes
-  02-ethical-hacking/
-  03-generative-ai-llms/
-  04-cyber-security-tools-ignou/
-  05-information-security-cec/
-scripts/
-  build-pdf.sh             # Build one volume PDF
-  build-all-pdfs.sh        # Build all course PDFs
+NPTELnotes/
+├── README.md                          # This file — project overview
+├── courses/                           # One folder per course (numbered 01–05)
+│   ├── 01-cyber-security-and-privacy/
+│   │   ├── README.md                  # Course overview, volume map, study tips
+│   │   ├── lecture-index.md           # All lectures with titles + video links
+│   │   ├── references.md              # Curated external references
+│   │   ├── diagrams/                  # Standalone diagram source files (optional)
+│   │   ├── notes/
+│   │   │   ├── vol-01-lectures-01-10.md          # Consolidated volume notes (PDF source)
+│   │   │   ├── vol-01-lectures-01-10.index.md    # Companion index for that PDF
+│   │   │   ├── vol-02-lectures-11-20.md
+│   │   │   ├── vol-02-lectures-11-20.index.md
+│   │   │   └── ...
+│   │   └── pdf/
+│   │       ├── vol-01-lectures-01-10.pdf         # Generated printable PDF
+│   │       └── ...
+│   │
+│   ├── 02-ethical-hacking/            # 62 lectures · 6 PDF volumes
+│   │   ├── README.md
+│   │   ├── lecture-index.md
+│   │   ├── references.md
+│   │   ├── notes/
+│   │   │   ├── vol-01.md … vol-06.md
+│   │   │   └── vol-01.index.md … vol-06.index.md
+│   │   └── pdf/
+│   │       └── vol-01.pdf … vol-06.pdf
+│   │
+│   ├── 03-generative-ai-llms/         # 36 lectures · 4 PDF volumes
+│   ├── 04-cyber-security-tools-ignou/ # 36 lectures · 4 PDF volumes
+│   │   └── notes/
+│   │       ├── vol-01.md … vol-04.md          # Consolidated volumes
+│   │       ├── vol-01/ … vol-04/              # Per-lecture source files
+│   │       │   ├── L01-….md
+│   │       │   └── .index.md
+│   │       └── vol-01.index.md … vol-04.index.md
+│   │
+│   └── 05-information-security-cec/   # 36 lectures · 4 PDF volumes
+│
+└── scripts/
+    ├── build-pdf.sh                   # Build one volume: pandoc + XeLaTeX
+    ├── build-all-pdfs.sh              # Rebuild all 22 PDF volumes
+    └── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
 ```
 
-Each volume markdown file (`notes/vol-*.md`) has a companion index (`notes/vol-*.index.md`) listing lectures, topics, and links to the consolidated PDF.
+### File conventions
+
+| File | Purpose |
+|------|---------|
+| `README.md` (course root) | Course description, instructor info, volume breakdown |
+| `lecture-index.md` | Master list of every lecture with public video URLs |
+| `references.md` | Standards, textbooks, tools, and further reading |
+| `notes/vol-*.md` | Full notes for one PDF volume — this is the PDF source |
+| `notes/vol-*.index.md` | Table of contents + lecture links for that volume |
+| `pdf/vol-*.pdf` | Generated output — rebuild from markdown with the scripts |
+| `diagrams/*.md` | Optional diagram definitions (mermaid / ASCII) |
+
+## How to use
+
+1. **Pick a course** from the table above and open its `README.md`.
+2. **Find a lecture** in `lecture-index.md` and watch the linked video.
+3. **Read the notes** in the matching volume under `notes/`, or open the PDF in `pdf/`.
+4. **Use the index** (`vol-*.index.md`) to jump to a specific lecture within a volume.
+5. **Follow references** in `references.md` for deeper reading.
+
+## Note depth by course
+
+| Course | Style | Focus |
+|--------|-------|-------|
+| Cyber Security and Privacy | Comprehensive | GRC, contingency planning, GDPR, DPDP |
+| Ethical Hacking | Concise, tool-focused | Recon, exploitation, post-exploitation, reporting |
+| Generative AI & LLMs | Comprehensive | VAEs, GANs, diffusion, transformers, RAG |
+| Cyber Security Tools (IGNOU) | Concise, hands-on | Nmap, Wireshark, ZAP, Snort, malware analysis |
+| Information Security (CEC) | Comprehensive | Cryptography, protocols, IAM, assurance |
 
 ## Building PDFs
 
-**Requirements:** [Pandoc](https://pandoc.org/) and a LaTeX engine (XeLaTeX recommended).
+Markdown is the source of truth. PDFs are generated with [Pandoc](https://pandoc.org/) and XeLaTeX.
 
 ```bash
 # Install dependencies (Debian/Ubuntu)
 sudo apt-get install -y pandoc texlive-xetex
 
-# Build all PDFs
+# Build all 22 PDF volumes
 ./scripts/build-all-pdfs.sh
 
 # Build a single volume
 ./scripts/build-pdf.sh courses/03-generative-ai-llms vol-01.md
 ```
 
-PDFs are written to each course's `pdf/` directory.
+Output is written to each course's `pdf/` directory. Mermaid blocks in markdown render as code in PDFs; for rendered diagrams, view the markdown source directly.
 
-## Note depth
+## Contributing
 
-| Course | Style |
-|--------|-------|
-| Cyber Security and Privacy | Comprehensive — governance, risk, privacy regulation |
-| Ethical Hacking | Concise, tool- and technique-focused |
-| Generative AI & LLMs | Comprehensive — math, architectures, LLM pipelines |
-| Cyber Security Tools (IGNOU) | Concise, hands-on tool walkthroughs |
-| Information Security (CEC) | Comprehensive — cryptography, protocols, assurance |
-
-## Video sources
-
-Notes reference publicly available NPTEL, SWAYAM, and YouTube lecture videos. No course registration is required to access the linked materials.
+Notes are organized for personal study. If you spot an error or want to add a reference, open an issue or PR on the relevant course folder.
 
 ## License
 
-Notes are for personal study. Course content and video rights belong to NPTEL, SWAYAM, and respective institutions.
+Notes are for personal study. Course content and video rights belong to NPTEL, SWAYAM, IGNOU, CEC, and their respective institutions.
