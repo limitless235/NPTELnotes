@@ -15,3 +15,5 @@
 | L27 | Motivation for Transformers and Attention Mechanisms | [§L27](vol-03.md#l27-motivation-for-transformers-and-attention-mechanisms) |
 
 **Key equations:** Forward diffusion marginal (L19), DDPM loss (L21), scaled dot-product attention (L27)
+
+**Key diagrams:** Forward diffusion (L19), reverse diffusion (L21), DDPM training pipeline (L23), LSTM cell (L26), scaled dot-product attention (L27)

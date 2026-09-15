@@ -21,8 +21,12 @@ fi
 
 mkdir -p "$PDF_DIR"
 
-pandoc "$INPUT" \
+BUILD_DIR="$NOTES_DIR/.pdf-build/$BASENAME"
+PREPROCESSED="$(python3 "$ROOT/scripts/preprocess-mermaid.py" "$INPUT" "$BUILD_DIR")"
+
+pandoc "$PREPROCESSED" \
   -o "$OUTPUT" \
+  --resource-path="$BUILD_DIR" \
   --from=markdown+tex_math_dollars+tex_math_single_backslash \
   --pdf-engine=xelatex \
   -V geometry:margin=1in \

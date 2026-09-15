@@ -85,8 +85,10 @@ NPTELnotes/
 │   └── 05-information-security-cec/   # 36 lectures · 4 PDF volumes
 │
 └── scripts/
-    ├── build-pdf.sh                   # Build one volume: pandoc + XeLaTeX
+    ├── build-pdf.sh                   # Build one volume: mermaid preprocess + pandoc + XeLaTeX
     ├── build-all-pdfs.sh              # Rebuild all 22 PDF volumes
+    ├── preprocess-mermaid.py          # Render ```mermaid blocks to PNG for PDF export
+    ├── convert-math-for-github.py     # Convert LaTeX math delimiters for GitHub preview
     └── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
 ```
 
@@ -122,11 +124,14 @@ NPTELnotes/
 
 ## Building PDFs
 
-Markdown is the source of truth. PDFs are generated with [Pandoc](https://pandoc.org/) and XeLaTeX.
+Markdown is the source of truth. PDFs are generated with [Pandoc](https://pandoc.org/), XeLaTeX, and [mermaid-cli](https://github.com/mermaid-js/mermaid-cli) (diagram preprocessing).
 
 ```bash
-# Install dependencies (Debian/Ubuntu)
+# Install system dependencies (Debian/Ubuntu)
 sudo apt-get install -y pandoc texlive-xetex
+
+# Install mermaid-cli (one-time, for diagram rendering in PDFs)
+cd scripts && npm install && cd ..
 
 # Build all 22 PDF volumes
 ./scripts/build-all-pdfs.sh
@@ -135,7 +140,7 @@ sudo apt-get install -y pandoc texlive-xetex
 ./scripts/build-pdf.sh courses/03-generative-ai-llms vol-01.md
 ```
 
-Output is written to each course's `pdf/` directory. Mermaid blocks in markdown render as code in PDFs; for rendered diagrams, view the markdown source directly.
+Output is written to each course's `pdf/` directory. Mermaid code blocks in markdown are rendered to PNG images during the PDF build (`scripts/preprocess-mermaid.py`). In GitHub markdown preview, mermaid blocks render natively.
 
 ## Contributing
 

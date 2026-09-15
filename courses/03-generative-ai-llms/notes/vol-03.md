@@ -39,6 +39,15 @@ $$
 
 As $t \to T$, $\bar{\alpha}_t \to 0$ and $x_T \approx \mathcal{N}(0, I)$—pure noise. The forward process is fixed (no learnable parameters).
 
+### Forward diffusion process
+
+```mermaid
+flowchart LR
+    X0["x₀ · clean image"] -->|"q(x₁|x₀)"| X1["x₁ · noisier"]
+    X1 -->|"..."| XT["x_T ≈ N(0, I)"]
+    X0 -. "closed form: x_t = √ᾱ_t·x₀ + √(1-ᾱ_t)·ε" .-> XT
+```
+
 ### Noise schedules
 
 | Schedule | Formula | Property |
@@ -126,6 +135,15 @@ $$
 
 where $z \sim \mathcal{N}(0, I)$ for $t > 1$ and $z = 0$ for $t = 1$.
 
+### Reverse diffusion process
+
+```mermaid
+flowchart LR
+    XT["x_T ~ N(0, I)"] -->|"p_θ(x_{T-1}|x_T)"| XN["x_{t-1}"]
+    XN -->|"iterate t → 1"| X0["x̂₀ · generated sample"]
+    EPS["ε_θ(x_t, t)"] -. "predicts noise" .-> XN
+```
+
 ### Variational lower bound
 
 The full DDPM objective is a weighted variational lower bound on $\log p_\theta(x_0)$, analogous to the VAE ELBO.
@@ -177,6 +195,16 @@ $$
 2. Compute $x_t = \sqrt{\bar{\alpha}_t}\, x_0 + \sqrt{1 - \bar{\alpha}_t}\, \varepsilon$.
 3. Predict $\hat{\varepsilon} = \varepsilon_\theta(x_t, t)$.
 4. Minimize $\|\varepsilon - \hat{\varepsilon}\|^2$.
+
+### DDPM training pipeline
+
+```mermaid
+flowchart TB
+    S0["Sample x₀ ~ data"] --> S1["Sample t, ε ~ N(0,I)"]
+    S1 --> S2["x_t = √ᾱ_t·x₀ + √(1-ᾱ_t)·ε"]
+    S2 --> U["U-Net ε_θ(x_t, t)"]
+    U --> L["Loss: ‖ε - ε̂‖²"]
+```
 
 ### Sampling algorithm
 
@@ -280,6 +308,21 @@ $$
 
 The cell state $c_t$ provides a highway for gradient flow across long sequences.
 
+### LSTM cell diagram
+
+```mermaid
+flowchart TB
+    IN["x_t, h_{t-1}"] --> FG["Forget gate f_t"]
+    IN --> IG["Input gate i_t"]
+    IN --> CG["Candidate c̃_t"]
+    FG --> CS["Cell state c_t"]
+    IG --> CS
+    CG --> CS
+    CS --> OG["Output gate o_t"]
+    OG --> HT["Hidden state h_t"]
+    CS -. "highway for gradients" .-> CS
+```
+
 ### Seq2seq
 
 Encoder RNN processes input sequence into context vector; decoder RNN generates output sequence. Limitation: fixed-size context bottleneck → attention (L27).
@@ -316,6 +359,18 @@ Set $Q = K = V = XW$ (projections of input sequence). Each position attends to a
 $$
 \text{SelfAttention}(X) = \text{softmax}\!\left(\frac{XW_Q (XW_K)^\top}{\sqrt{d_k}}\right) XW_V
 $$
+
+### Scaled dot-product attention
+
+```mermaid
+flowchart LR
+    Q["Queries Q"] --> SC["QKᵀ / √d_k"]
+    K["Keys K"] --> SC
+    SC --> SM["softmax"]
+    SM --> OUT["weighted sum"]
+    V["Values V"] --> OUT
+    OUT --> A["Attention output"]
+```
 
 ### Why transformers?
 
