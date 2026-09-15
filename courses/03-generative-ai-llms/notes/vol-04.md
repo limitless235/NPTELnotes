@@ -26,33 +26,33 @@ flowchart TB
 
 ### Multi-head attention
 
-For head \(i\):
+For head $i$:
 
-\[
+$$
 \text{head}_i = \text{Attention}(XW_i^Q, XW_i^K, XW_i^V)
-\]
+$$
 
-\[
+$$
 \text{MultiHead}(X) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)\, W^O
-\]
+$$
 
 ### Feed-forward sublayer
 
-\[
+$$
 \text{FFN}(x) = \max(0, xW_1 + b_1)\, W_2 + b_2
-\]
+$$
 
 Applied position-wise (identical network at each position, different parameters from attention).
 
 ### Layer normalization and residuals
 
-\[
+$$
 x' = \text{LayerNorm}(x + \text{Sublayer}(x))
-\]
+$$
 
 ### Complexity
 
-Self-attention has \(O(n^2 d)\) time and memory for sequence length \(n\), compared to \(O(n d^2)\) for RNNs—but with full parallelism over \(n\).
+Self-attention has $O(n^2 d)$ time and memory for sequence length $n$, compared to $O(n d^2)$ for RNNs—but with full parallelism over $n$.
 
 ### Decoder-only vs. encoder-decoder
 
@@ -83,17 +83,17 @@ Text is split into **tokens**—subword units that balance vocabulary size and c
 
 ### Embeddings
 
-Token IDs are mapped to vectors via a learned embedding matrix \(E \in \mathbb{R}^{|V| \times d}\):
+Token IDs are mapped to vectors via a learned embedding matrix $E \in \mathbb{R}^{|V| \times d}$:
 
-\[
+$$
 x_i = E[\text{token\_id}_i]
-\]
+$$
 
 ### Sinusoidal positional encoding (original Transformer)
 
-\[
+$$
 PE_{(pos, 2i)} = \sin\!\left(pos / 10000^{2i/d}\right), \quad PE_{(pos, 2i+1)} = \cos\!\left(pos / 10000^{2i/d}\right)
-\]
+$$
 
 ### Learned positional embeddings
 
@@ -119,11 +119,11 @@ Modern models (GPT, BERT) use learned position embeddings. **RoPE** (Rotary Posi
 
 ### In-context learning
 
-LLMs conditioned on demonstration examples \(\{(x_i, y_i)\}\) perform tasks without parameter updates:
+LLMs conditioned on demonstration examples $\{(x_i, y_i)\}$ perform tasks without parameter updates:
 
-\[
+$$
 P(y \mid x, \{(x_i, y_i)\}_{i=1}^{k}) 
-\]
+$$
 
 This emerges from pre-training on diverse text but is not equivalent to true learning—performance is sensitive to example selection and ordering.
 
@@ -156,21 +156,21 @@ flowchart LR
 
 ### Formal formulation (Lewis et al., 2020)
 
-Given query \(x\), retrieve documents \(z \in \mathcal{Z}\) and generate:
+Given query $x$, retrieve documents $z \in \mathcal{Z}$ and generate:
 
-\[
+$$
 p(y \mid x) = \sum_{z \in \mathcal{Z}} p_\eta(z \mid x)\, p_\theta(y \mid x, z)
-\]
+$$
 
-where \(p_\eta\) is the retriever and \(p_\theta\) is the generator (LLM).
+where $p_\eta$ is the retriever and $p_\theta$ is the generator (LLM).
 
 ### Retrieval scoring
 
 **Dense retrieval** with bi-encoder:
 
-\[
+$$
 \text{score}(q, d) = \text{sim}(E_q(q), E_d(d)) = \frac{E_q(q)^\top E_d(d)}{\|E_q(q)\|\,\|E_d(d)\|}
-\]
+$$
 
 ### Advantages over fine-tuning
 
@@ -197,9 +197,9 @@ where \(p_\eta\) is the retriever and \(p_\theta\) is the generator (LLM).
 
 ### Embedding pipeline
 
-1. Chunk documents → \(\{c_1, \ldots, c_M\}\).
-2. Embed each chunk: \(v_i = E_d(c_i)\).
-3. Store \((v_i, \text{metadata}_i)\) in vector database.
+1. Chunk documents → $\{c_1, \ldots, c_M\}$.
+2. Embed each chunk: $v_i = E_d(c_i)$.
+3. Store $(v_i, \text{metadata}_i)$ in vector database.
 
 ### Vector databases
 
@@ -214,9 +214,9 @@ where \(p_\eta\) is the retriever and \(p_\theta\) is the generator (LLM).
 
 For large corpora, exact search is too slow. ANN algorithms (HNSW, IVF) trade accuracy for speed:
 
-\[
+$$
 \mathcal{Z}_k = \text{ANN}_k\!\left(E_q(q),\, \{v_i\}_{i=1}^{M}\right)
-\]
+$$
 
 ---
 
@@ -233,15 +233,15 @@ Updating all parameters of a 7B model requires storing optimizer states for 7B+ 
 
 ### LoRA (Low-Rank Adaptation)
 
-Freeze pretrained weights \(W_0\) and add a low-rank update:
+Freeze pretrained weights $W_0$ and add a low-rank update:
 
-\[
+$$
 W = W_0 + \Delta W = W_0 + BA
-\]
+$$
 
-where \(B \in \mathbb{R}^{d \times r}\), \(A \in \mathbb{R}^{r \times k}\), and rank \(r \ll \min(d, k)\).
+where $B \in \mathbb{R}^{d \times r}$, $A \in \mathbb{R}^{r \times k}$, and rank $r \ll \min(d, k)$.
 
-Train only \(A\) and \(B\)—typically < 1% of original parameters.
+Train only $A$ and $B$—typically < 1% of original parameters.
 
 ### Other PEFT methods
 
@@ -271,11 +271,11 @@ Train only \(A\) and \(B\)—typically < 1% of original parameters.
 
 ### CLIP (Contrastive Language-Image Pre-training)
 
-Train image encoder \(f_I\) and text encoder \(f_T\) with contrastive loss:
+Train image encoder $f_I$ and text encoder $f_T$ with contrastive loss:
 
-\[
+$$
 \mathcal{L} = -\frac{1}{N}\sum_i \log \frac{\exp(\text{sim}(f_I(x_i), f_T(t_i)) / \tau)}{\sum_j \exp(\text{sim}(f_I(x_i), f_T(t_j)) / \tau)}
-\]
+$$
 
 Enables zero-shot image classification via text prompts.
 

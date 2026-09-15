@@ -14,6 +14,6 @@
 | L08 | Variational Autoencoders and the Reparameterization Trick | [§L08](vol-01.md#l08-variational-autoencoders-and-the-reparameterization-trick) |
 | L09 | Evidence Lower Bound (ELBO) Derivation | [§L09](vol-01.md#l09-evidence-lower-bound-elbo-derivation) |
 
-**Key equations:** ELBO (L09), reparameterization \(z = \mu + \sigma\varepsilon\) (L08)
+**Key equations:** ELBO (L09), reparameterization $z = \mu + \sigma\varepsilon$ (L08)
 
 **Key diagram:** VAE architecture (L08)

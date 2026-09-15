@@ -8,31 +8,31 @@
 
 ### Learning objectives
 
-- Extend VAEs to conditional generation \(p(x \mid c)\).
+- Extend VAEs to conditional generation $p(x \mid c)$.
 - Derive the conditional ELBO.
 
 ### Conditional generative model
 
-Given condition \(c\) (class label, text caption, attribute vector):
+Given condition $c$ (class label, text caption, attribute vector):
 
-\[
+$$
 p_\theta(x \mid c) = \int p_\theta(x \mid z, c)\, p(z \mid c)\, dz
-\]
+$$
 
-The encoder becomes \(q_\phi(z \mid x, c)\) and the decoder \(p_\theta(x \mid z, c)\).
+The encoder becomes $q_\phi(z \mid x, c)$ and the decoder $p_\theta(x \mid z, c)$.
 
 ### Conditional ELBO
 
-\[
+$$
 \mathcal{L}(\theta, \phi; x, c) = \mathbb{E}_{q_\phi(z \mid x, c)}\!\left[\log p_\theta(x \mid z, c)\right] - D_{\mathrm{KL}}\!\left(q_\phi(z \mid x, c) \,\|\, p(z \mid c)\right)
-\]
+$$
 
-Typically \(p(z \mid c) = p(z) = \mathcal{N}(0, I)\).
+Typically $p(z \mid c) = p(z) = \mathcal{N}(0, I)$.
 
 ### Applications
 
 - Class-conditional image generation (MNIST digits by label)
-- Text-to-image conditioning (caption as \(c\))
+- Text-to-image conditioning (caption as $c$)
 - Controlled attribute manipulation
 
 ---
@@ -50,11 +50,11 @@ A representation is **disentangled** if each latent dimension controls a single 
 
 ### β-VAE objective
 
-\[
+$$
 \mathcal{L}_{\beta\text{-VAE}} = \mathbb{E}_{q_\phi}\!\left[\log p_\theta(x \mid z)\right] - \beta \cdot D_{\mathrm{KL}}\!\left(q_\phi(z \mid x) \,\|\, p(z)\right)
-\]
+$$
 
-With \(\beta > 1\), stronger pressure on the KL term encourages **factorized** latent codes at the cost of reconstruction fidelity.
+With $\beta > 1$, stronger pressure on the KL term encourages **factorized** latent codes at the cost of reconstruction fidelity.
 
 ### Evaluation metrics
 
@@ -73,27 +73,27 @@ With \(\beta > 1\), stronger pressure on the KL term encourages **factorized** l
 
 ### Latent interpolation
 
-Given encodings \(z_1 = \mu_\phi(x_1)\) and \(z_2 = \mu_\phi(x_2)\):
+Given encodings $z_1 = \mu_\phi(x_1)$ and $z_2 = \mu_\phi(x_2)$:
 
-\[
+$$
 z(\alpha) = (1 - \alpha)\, z_1 + \alpha\, z_2, \quad \alpha \in [0, 1]
-\]
+$$
 
-Decode \(\hat{x}(\alpha) = \mu_\theta(z(\alpha))\) for smooth morphing between inputs.
+Decode $\hat{x}(\alpha) = \mu_\theta(z(\alpha))$ for smooth morphing between inputs.
 
 ### Latent arithmetic
 
-\[
+$$
 z_{\text{result}} = z_{\text{king}} - z_{\text{man}} + z_{\text{woman}}
-\]
+$$
 
 ### VAE limitations
 
 | Limitation | Cause |
 |------------|-------|
 | Blurry outputs | Gaussian decoder assumption; MSE loss |
-| Posterior collapse | KL → 0; decoder ignores \(z\) |
-| Weak samples | ELBO is loose; \(p_\theta(x)\) underestimated |
+| Posterior collapse | KL → 0; decoder ignores $z$ |
+| Weak samples | ELBO is loose; $p_\theta(x)$ underestimated |
 
 These motivate adversarial training (GANs, next section).
 
@@ -119,42 +119,42 @@ flowchart LR
     OUT -->|"Train D: classify"| D
 ```
 
-- **Generator** \(G_\theta: \mathcal{Z} \to \mathcal{X}\) maps noise to data.
-- **Discriminator** \(D_\phi: \mathcal{X} \to [0, 1]\) classifies real vs. fake.
+- **Generator** $G_\theta: \mathcal{Z} \to \mathcal{X}$ maps noise to data.
+- **Discriminator** $D_\phi: \mathcal{X} \to [0, 1]$ classifies real vs. fake.
 
 ### Minimax objective
 
-\[
+$$
 \min_G \max_D \; V(D, G) = \mathbb{E}_{x \sim p_{\text{data}}}\!\left[\log D(x)\right] + \mathbb{E}_{z \sim p(z)}\!\left[\log(1 - D(G(z)))\right]
-\]
+$$
 
 ### Optimal discriminator
 
-For fixed \(G\), the optimal discriminator is:
+For fixed $G$, the optimal discriminator is:
 
-\[
+$$
 D^*(x) = \frac{p_{\text{data}}(x)}{p_{\text{data}}(x) + p_G(x)}
-\]
+$$
 
 ### Global optimum
 
-At equilibrium, \(p_G = p_{\text{data}}\) and \(D^*(x) = \frac{1}{2}\).
+At equilibrium, $p_G = p_{\text{data}}$ and $D^*(x) = \frac{1}{2}$.
 
 ### Non-saturating generator loss
 
 In practice, the generator minimizes:
 
-\[
+$$
 \mathcal{L}_G = -\mathbb{E}_{z \sim p(z)}\!\left[\log D(G(z))\right]
-\]
+$$
 
-This avoids vanishing gradients when \(D\) confidently rejects fakes.
+This avoids vanishing gradients when $D$ confidently rejects fakes.
 
 ### Key equation summary
 
-\[
+$$
 \boxed{\min_\theta \max_\phi \; \mathbb{E}_{x}\!\left[\log D_\phi(x)\right] + \mathbb{E}_{z}\!\left[\log\!\left(1 - D_\phi(G_\theta(z))\right)\right]}
-\]
+$$
 
 ---
 
@@ -170,13 +170,13 @@ This avoids vanishing gradients when \(D\) confidently rejects fakes.
 | Problem | Description |
 |---------|-------------|
 | Mode collapse | Generator produces limited variety |
-| Vanishing gradients | \(D\) too strong; \(G\) receives no useful signal |
+| Vanishing gradients | $D$ too strong; $G$ receives no useful signal |
 | Oscillation | No stable Nash equilibrium |
 | Non-convergence | Alternating updates don't guarantee convergence |
 
 ### Mode collapse
 
-The generator maps many \(z\) values to a few outputs, failing to cover the full data distribution. Detection: low diversity in generated samples; low inception score variance.
+The generator maps many $z$ values to a few outputs, failing to cover the full data distribution. Detection: low diversity in generated samples; low inception score variance.
 
 ### Mitigation techniques
 
@@ -185,11 +185,11 @@ The generator maps many \(z\) values to a few outputs, failing to cover the full
 3. **Spectral normalization** — constrain discriminator Lipschitz constant.
 4. **Wasserstein GAN (WGAN)** — replace JS divergence with Wasserstein distance:
 
-\[
+$$
 \mathcal{L}_{\text{WGAN}} = \mathbb{E}_{x \sim p_{\text{data}}}[D(x)] - \mathbb{E}_{z \sim p(z)}[D(G(z))]
-\]
+$$
 
-with weight clipping or gradient penalty on \(D\).
+with weight clipping or gradient penalty on $D$.
 
 ---
 
@@ -203,9 +203,9 @@ with weight clipping or gradient penalty on \(D\).
 ### DCGAN guidelines (Radford et al., 2016)
 
 1. Replace pooling with strided convolutions (discriminator) and transposed convolutions (generator).
-2. Use batch normalization in both \(G\) and \(D\).
+2. Use batch normalization in both $G$ and $D$.
 3. Remove fully connected hidden layers; use global average pooling.
-4. Use ReLU in \(G\) (except output: tanh); LeakyReLU (0.2) in \(D\).
+4. Use ReLU in $G$ (except output: tanh); LeakyReLU (0.2) in $D$.
 
 ### Generator structure
 
@@ -219,9 +219,9 @@ Each transposed convolution doubles spatial resolution while halving channels.
 
 For upsampling, transposed convolution (deconvolution) learns the upsampling kernel:
 
-\[
+$$
 y_{i,j} = \sum_{m,n} W_{m,n} \cdot x_{\lfloor i/s \rfloor,\, \lfloor j/s \rfloor}
-\]
+$$
 
 ---
 
@@ -234,23 +234,23 @@ y_{i,j} = \sum_{m,n} W_{m,n} \cdot x_{\lfloor i/s \rfloor,\, \lfloor j/s \rfloor
 
 ### Conditional GAN (cGAN)
 
-\[
+$$
 \min_G \max_D \; \mathbb{E}_{x,y}\!\left[\log D(x, y)\right] + \mathbb{E}_{z,y}\!\left[\log(1 - D(G(z, y), y))\right]
-\]
+$$
 
-Condition \(y\) is concatenated to input (channel-wise) or embedded and added.
+Condition $y$ is concatenated to input (channel-wise) or embedded and added.
 
 ### Pix2Pix
 
 For paired image translation (e.g., sketch → photo):
 
-\[
+$$
 \mathcal{L} = \mathcal{L}_{\text{cGAN}} + \lambda \mathcal{L}_{\text{L1}}
-\]
+$$
 
-where \(\mathcal{L}_{\text{L1}} = \|y - G(x)\|_1\) enforces pixel-level fidelity.
+where $\mathcal{L}_{\text{L1}} = \|y - G(x)\|_1$ enforces pixel-level fidelity.
 
-Uses a **U-Net generator** with skip connections and a **PatchGAN discriminator** that classifies local \(N \times N\) patches.
+Uses a **U-Net generator** with skip connections and a **PatchGAN discriminator** that classifies local $N \times N$ patches.
 
 ---
 
@@ -263,19 +263,19 @@ Uses a **U-Net generator** with skip connections and a **PatchGAN discriminator*
 
 ### Problem setting
 
-Domains \(X\) and \(Y\) with unpaired samples. Learn \(G: X \to Y\) and \(F: Y \to X\).
+Domains $X$ and $Y$ with unpaired samples. Learn $G: X \to Y$ and $F: Y \to X$.
 
 ### Cycle consistency
 
-\[
+$$
 \mathcal{L}_{\text{cycle}} = \mathbb{E}_{x \sim p_X}\!\left[\|F(G(x)) - x\|_1\right] + \mathbb{E}_{y \sim p_Y}\!\left[\|G(F(y)) - y\|_1\right]
-\]
+$$
 
 ### Full objective
 
-\[
+$$
 \mathcal{L} = \mathcal{L}_{\text{GAN}}(G, D_Y) + \mathcal{L}_{\text{GAN}}(F, D_X) + \lambda \mathcal{L}_{\text{cycle}}
-\]
+$$
 
 ### Applications
 
@@ -292,12 +292,12 @@ Domains \(X\) and \(Y\) with unpaired samples. Learn \(G: X \to Y\) and \(F: Y \
 
 ### StyleGAN innovations
 
-1. **Mapping network** — transforms \(z\) to intermediate latent \(w\) in a less entangled space.
+1. **Mapping network** — transforms $z$ to intermediate latent $w$ in a less entangled space.
 2. **Adaptive instance normalization (AdaIN)** — injects style at each layer:
 
-\[
+$$
 \text{AdaIN}(x, y) = y_s \cdot \frac{x - \mu(x)}{\sigma(x)} + y_b
-\]
+$$
 
 3. **Progressive growing** — train on low resolution first, then add layers.
 
@@ -305,17 +305,17 @@ Domains \(X\) and \(Y\) with unpaired samples. Learn \(G: X \to Y\) and \(F: Y \
 
 **Fréchet Inception Distance (FID):**
 
-\[
+$$
 \text{FID} = \|\mu_r - \mu_g\|^2 + \text{Tr}\!\left(\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{1/2}\right)
-\]
+$$
 
-where \((\mu_r, \Sigma_r)\) and \((\mu_g, \Sigma_g)\) are mean and covariance of Inception features for real and generated images. Lower is better.
+where $(\mu_r, \Sigma_r)$ and $(\mu_g, \Sigma_g)$ are mean and covariance of Inception features for real and generated images. Lower is better.
 
 **Inception Score (IS):**
 
-\[
+$$
 \text{IS} = \exp\!\left(\mathbb{E}_x \left[D_{\mathrm{KL}}\!\left(p(y \mid x) \,\|\, p(y)\right)\right]\right)
-\]
+$$
 
 Higher IS indicates diverse, classifiable generated images.
 
