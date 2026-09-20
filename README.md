@@ -13,6 +13,8 @@ NPTELnotes is a self-contained reference library — not a video mirror or cours
 
 All video links point to public NPTEL, SWAYAM, or YouTube sources. No registration is required.
 
+Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy are in [`courses/01-cyber-security-and-privacy/transcripts/`](courses/01-cyber-security-and-privacy/transcripts/) and mirrored as PDFs in [`Cyber Security and Privacy/`](Cyber%20Security%20and%20Privacy/).
+
 ## At a glance
 
 | | |
@@ -26,7 +28,7 @@ All video links point to public NPTEL, SWAYAM, or YouTube sources. No registrati
 
 | # | Course | Lectures | PDF split | Folder |
 |---|--------|----------|-----------|--------|
-| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 | `courses/01-cyber-security-and-privacy/` |
+| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 per-video transcripts | `courses/01-cyber-security-and-privacy/` |
 | 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 5 × 10 + 1 × 12 | `courses/02-ethical-hacking/` |
 | 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 | 4 × 9 | `courses/03-generative-ai-llms/` |
 | 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
