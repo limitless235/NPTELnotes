@@ -34,12 +34,14 @@ def render_mermaid(mermaid_src: str, output_png: Path, mmdc: Path) -> None:
     puppeteer_cfg = Path("/tmp/puppeteer-mmdc.json")
     if puppeteer_cfg.exists():
         cmd.extend(["-p", str(puppeteer_cfg)])
-    subprocess.run(
+    result = subprocess.run(
         cmd,
-        check=True,
         capture_output=True,
         text=True,
     )
+    if result.returncode != 0:
+        err = (result.stderr or result.stdout or "").strip()
+        raise RuntimeError(f"mermaid-cli failed for {mmd_file}:\n{err}")
     mmd_file.unlink(missing_ok=True)
 
 

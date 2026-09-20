@@ -136,6 +136,8 @@ The public EMRC playlist is longer than this 36-lecture week plan. Per-video tra
 |---|---|
 | Intro + M01–M47 markdown | [transcripts/](transcripts/) |
 | One PDF per video | [transcripts/pdf/](transcripts/pdf/) |
+| Transcript-grounded study notes | [notes-2/](notes-2/) |
+| Notes-2 volume PDFs | [notes-2/pdf/](notes-2/pdf/) |
 
 ## Volume cross-reference
 

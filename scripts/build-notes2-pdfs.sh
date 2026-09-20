@@ -1,20 +1,19 @@
 #!/usr/bin/env bash
-# Build notes-2 volume PDFs (transcript-grounded Generative AI notes).
+# Build notes-2 volume PDFs (mermaid preprocess + pandoc + XeLaTeX).
+# Usage: ./scripts/build-notes2-pdfs.sh [all|genai|infosec]
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-COURSE="courses/03-generative-ai-llms"
-NOTES_DIR="$ROOT/$COURSE/notes-2"
-PDF_DIR="$NOTES_DIR/pdf"
-
-mkdir -p "$PDF_DIR"
+TARGET="${1:-all}"
 
 build_one() {
-  local vol="$1"
-  local input="$NOTES_DIR/$vol"
-  local basename="${vol%.md}"
-  local output="$PDF_DIR/${basename}.pdf"
-  echo "Building $vol ..."
-  local build_dir="$NOTES_DIR/.pdf-build/$basename"
+  local notes_dir="$1"
+  local vol_md="$2"
+  local basename="${vol_md%.md}"
+  local input="$notes_dir/$vol_md"
+  local output="$notes_dir/pdf/${basename}.pdf"
+  local build_dir="$notes_dir/.pdf-build/$basename"
+  echo "Building $notes_dir/$vol_md ..."
+  mkdir -p "$notes_dir/pdf"
   local preprocessed
   preprocessed="$(python3 "$ROOT/scripts/preprocess-mermaid.py" "$input" "$build_dir")"
   pandoc "$preprocessed" \
@@ -34,10 +33,24 @@ build_one() {
   echo "Built: $output"
 }
 
-python3 "$ROOT/scripts/assemble-notes2-volumes.py"
+if [[ "$TARGET" != "all" && "$TARGET" != "genai" && "$TARGET" != "infosec" ]]; then
+  echo "Usage: $0 [all|genai|infosec]" >&2
+  exit 1
+fi
 
-for v in vol-01.md vol-02.md vol-03.md vol-04.md vol-05.md vol-06.md; do
-  build_one "$v"
-done
+if [[ "$TARGET" == "all" || "$TARGET" == "genai" ]]; then
+  python3 "$ROOT/scripts/assemble-notes2-volumes.py"
+  GENAI="$ROOT/courses/03-generative-ai-llms/notes-2"
+  for v in vol-01.md vol-02.md vol-03.md vol-04.md vol-05.md vol-06.md; do
+    build_one "$GENAI" "$v"
+  done
+fi
+
+if [[ "$TARGET" == "all" || "$TARGET" == "infosec" ]]; then
+  INFOSEC="$ROOT/courses/05-information-security-cec/notes-2"
+  for v in vol-01.md vol-02.md vol-03.md vol-04.md; do
+    build_one "$INFOSEC" "$v"
+  done
+fi
 
 echo "All notes-2 PDFs built."

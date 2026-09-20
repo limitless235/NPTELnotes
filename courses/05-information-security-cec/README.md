@@ -34,7 +34,11 @@ By the end of this course, you should be able to:
 ├── README.md              # This file
 ├── references.md          # Textbooks and standards
 ├── lecture-index.md       # 36-lecture SWAYAM week plan
-├── notes/                 # Structured study notes (4 volumes)
+├── notes/                 # 36-lecture SWAYAM week-plan notes (4 volumes)
+├── notes-2/               # Transcript-grounded notes for the 48-video EMRC playlist
+│   ├── lectures/          # One file per module
+│   ├── vol-01.md … vol-04.md
+│   └── pdf/
 └── transcripts/           # Per-video YouTube transcripts + PDFs (48 videos)
     ├── README.md
     ├── M00-….md … M47-….md
@@ -58,6 +62,24 @@ From the repository root:
 ```bash
 ./scripts/build-pdf.sh courses/05-information-security-cec vol-01.md
 ./scripts/build-all-pdfs.sh
+```
+
+## Transcript-grounded notes (`notes-2`)
+
+Full study notes for the **YouTube playlist** (intro + M01–M47), written from the transcripts with diagrams:
+
+| Volume | Modules | File |
+|--------|---------|------|
+| 01 | M00–M11 | [notes-2/vol-01.md](notes-2/vol-01.md) · [PDF](notes-2/pdf/vol-01.pdf) |
+| 02 | M12–M23 | [notes-2/vol-02.md](notes-2/vol-02.md) · [PDF](notes-2/pdf/vol-02.pdf) |
+| 03 | M24–M35 | [notes-2/vol-03.md](notes-2/vol-03.md) · [PDF](notes-2/pdf/vol-03.pdf) |
+| 04 | M36–M47 | [notes-2/vol-04.md](notes-2/vol-04.md) · [PDF](notes-2/pdf/vol-04.pdf) |
+
+Index: [notes-2/README.md](notes-2/README.md)
+
+```bash
+python3 scripts/assemble_infosec_notes2.py
+./scripts/build-notes2-pdfs.sh
 ```
 
 ## YouTube lecture transcripts
