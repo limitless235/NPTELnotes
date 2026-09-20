@@ -33,16 +33,13 @@ By the end of this course, you should be able to:
 05-information-security-cec/
 ├── README.md              # This file
 ├── references.md          # Textbooks and standards
-├── lecture-index.md       # All 36 lectures
-└── notes/
-    ├── vol-01.md          # L01–L09: Security fundamentals, threats
-    ├── vol-01.index.md
-    ├── vol-02.md          # L10–L18: System threats, classical crypto
-    ├── vol-02.index.md
-    ├── vol-03.md          # L19–L27: DES/AES, RSA, DH, ECC
-    ├── vol-03.index.md
-    ├── vol-04.md          # L28–L36: Hash, signatures, PKI, auditing
-    └── vol-04.index.md
+├── lecture-index.md       # 36-lecture SWAYAM week plan
+├── notes/                 # Structured study notes (4 volumes)
+└── transcripts/           # Per-video YouTube transcripts + PDFs (48 videos)
+    ├── README.md
+    ├── M00-….md … M47-….md
+    └── pdf/
+        └── M00-….pdf … M47-….pdf
 ```
 
 ## Volume guide
@@ -63,9 +60,18 @@ From the repository root:
 ./scripts/build-all-pdfs.sh
 ```
 
+## YouTube lecture transcripts
+
+The EMRC Patiala playlist has **47 modules plus an intro video** (network security, protocols, wireless, cloud, DDoS — broader than the 36-lecture SWAYAM week plan). Each video has a paragraph-form transcript PDF (no timestamps):
+
+- Playlist: https://www.youtube.com/playlist?list=PLcWnLUJA-zgdEW1tOYLs7xsZ0lP8gx-6b
+- Index: [transcripts/README.md](transcripts/README.md)
+- PDFs: [transcripts/pdf/](transcripts/pdf/)
+
 ## Official resources
 
 - [Class Central course listing](https://www.classcentral.com/course/swayam-information-security-91683)
+- [YouTube playlist — Information Security](https://www.youtube.com/playlist?list=PLcWnLUJA-zgdEW1tOYLs7xsZ0lP8gx-6b)
 - [SWAYAM platform](https://swayam.gov.in/)
 
 ## Disclaimer

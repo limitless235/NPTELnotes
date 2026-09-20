@@ -13,6 +13,8 @@ NPTELnotes is a self-contained reference library — not a video mirror or cours
 
 All video links point to public NPTEL, SWAYAM, or YouTube sources. No registration is required.
 
+Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy are in [`courses/01-cyber-security-and-privacy/transcripts/`](courses/01-cyber-security-and-privacy/transcripts/) and mirrored as PDFs in [`Cyber Security and Privacy/`](Cyber%20Security%20and%20Privacy/).
+
 ## At a glance
 
 | | |
@@ -26,7 +28,7 @@ All video links point to public NPTEL, SWAYAM, or YouTube sources. No registrati
 
 | # | Course | Lectures | PDF split | Folder |
 |---|--------|----------|-----------|--------|
-| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 | `courses/01-cyber-security-and-privacy/` |
+| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 per-video transcripts | `courses/01-cyber-security-and-privacy/` |
 | 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 5 × 10 + 1 × 12 | `courses/02-ethical-hacking/` |
 | 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 condensed + 64 video-grounded | 4 + 6 | `courses/03-generative-ai-llms/` |
 | 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
@@ -83,6 +85,7 @@ NPTELnotes/
 │   │       └── vol-01.index.md … vol-04.index.md
 │   │
 │   └── 05-information-security-cec/   # 36 lectures · 4 PDF volumes
+│       └── transcripts/               # 48 YouTube transcripts (markdown + per-video PDF)
 │
 └── scripts/
     ├── build-pdf.sh                   # Build one volume: mermaid preprocess + pandoc + XeLaTeX
@@ -92,7 +95,8 @@ NPTELnotes/
     ├── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
     ├── scrape-genai-transcripts.py    # Fetch YouTube captions + build per-video PDFs
     ├── assemble-notes2-volumes.py     # Concatenate notes-2 lectures into print volumes
-    └── build-notes2-pdfs.sh           # Build transcript-grounded GenAI notes PDFs
+    ├── build-notes2-pdfs.sh           # Build transcript-grounded GenAI notes PDFs
+    └── scrape_infosec_youtube_transcripts.py  # CEC Information Security YouTube transcripts → MD/PDF
 ```
 
 ### File conventions
