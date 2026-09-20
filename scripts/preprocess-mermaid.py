@@ -16,7 +16,7 @@ def render_mermaid(mermaid_src: str, output_png: Path, mmdc: Path) -> None:
     output_png.parent.mkdir(parents=True, exist_ok=True)
     mmd_file = output_png.with_suffix(".mmd")
     mmd_file.write_text(mermaid_src.strip() + "\n", encoding="utf-8")
-    subprocess.run(
+    result = subprocess.run(
         [
             str(mmdc),
             "-i",
@@ -32,10 +32,12 @@ def render_mermaid(mermaid_src: str, output_png: Path, mmdc: Path) -> None:
             "--scale",
             "2",
         ],
-        check=True,
         capture_output=True,
         text=True,
     )
+    if result.returncode != 0:
+        err = (result.stderr or result.stdout or "").strip()
+        raise RuntimeError(f"mermaid-cli failed for {mmd_file}:\n{err}")
     mmd_file.unlink(missing_ok=True)
 
 

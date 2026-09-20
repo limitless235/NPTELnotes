@@ -21,7 +21,7 @@ Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy ar
 |---|---|
 | **Courses** | 5 |
 | **Total lectures** | 210 |
-| **PDF volumes** | 22 |
+| **PDF volumes** | 22 + 4 transcript-grounded Information Security volumes |
 | **Formats** | Markdown (source) + PDF (export) |
 
 ## Courses
@@ -32,7 +32,7 @@ Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy ar
 | 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 5 × 10 + 1 × 12 | `courses/02-ethical-hacking/` |
 | 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 | 4 × 9 | `courses/03-generative-ai-llms/` |
 | 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
-| 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 | 4 × 9 | `courses/05-information-security-cec/` |
+| 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 + 48 playlist | 4 × 9 (SWAYAM) + 4 × 12 (notes-2) | `courses/05-information-security-cec/` |
 
 ### Official course links
 
@@ -85,6 +85,7 @@ NPTELnotes/
 │   │       └── vol-01.index.md … vol-04.index.md
 │   │
 │   └── 05-information-security-cec/   # 36 lectures · 4 PDF volumes
+│       ├── notes-2/                   # Transcript-grounded notes (M00–M47) + 4 PDFs
 │       └── transcripts/               # 48 YouTube transcripts (markdown + per-video PDF)
 │
 └── scripts/
@@ -93,7 +94,9 @@ NPTELnotes/
     ├── preprocess-mermaid.py          # Render ```mermaid blocks to PNG for PDF export
     ├── convert-math-for-github.py     # Convert LaTeX math delimiters for GitHub preview
     ├── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
-    └── scrape_infosec_youtube_transcripts.py  # CEC Information Security YouTube transcripts → MD/PDF
+    ├── scrape_infosec_youtube_transcripts.py  # CEC Information Security YouTube transcripts → MD/PDF
+    ├── assemble_infosec_notes2.py     # Concatenate notes-2 lectures into 4 volumes
+    └── build-notes2-pdfs.sh           # Build notes-2 volume PDFs
 ```
 
 ### File conventions
