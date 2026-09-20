@@ -9,6 +9,10 @@
 
 This course develops the **mathematical and algorithmic foundations** of modern generative artificial intelligence—from deep learning prerequisites through variational autoencoders, GANs, diffusion models, transformers, and large language models. The material is organized as **36 lectures** (3 per week × 12 weeks), aligned with the official NPTEL syllabus. Weeks 1–9 correspond to approximately **58 official NPTEL video lectures**; this repository consolidates that content into a structured lecture sequence with expanded derivations and diagrams.
 
+Per-video **YouTube caption transcripts** (intro + 63 lectures) are in [`transcripts/`](transcripts/), with one markdown file and one PDF per video from the [official playlist](https://www.youtube.com/playlist?list=PLgMDNELGJ1Ca_DduFvH6qfI1eapL48xOr).
+
+**Transcript-grounded study notes** covering every official video (nothing skipped) are in [`notes-2/`](notes-2/), with six printable PDF volumes.
+
 ## Learning outcomes
 
 By the end of this course, you should be able to:
@@ -35,15 +39,15 @@ By the end of this course, you should be able to:
 ├── README.md              # This file
 ├── references.md          # Textbooks and papers
 ├── lecture-index.md       # All 36 lectures with NPTEL mapping
-└── notes/
-    ├── vol-01.md          # L01–L09: DL foundations, autoencoders, VAE
-    ├── vol-01.index.md
-    ├── vol-02.md          # L10–L18: Advanced VAEs, GANs
-    ├── vol-02.index.md
-    ├── vol-03.md          # L19–L27: Diffusion, NLP, transformers
-    ├── vol-03.index.md
-    ├── vol-04.md          # L28–L36: LLMs, RAG, multimodal, ethics
-    └── vol-04.index.md
+├── transcripts/           # One caption transcript per official YouTube video
+│   ├── README.md          # Index of intro + Lec 01–63
+│   ├── 00-….md … 63-….md
+│   └── pdf/               # Printable PDF for each video
+├── notes/                 # Earlier condensed 36-lecture notes
+└── notes-2/               # Transcript-grounded notes (intro + Lec 01–63)
+    ├── L00-….md … L63-….md
+    ├── vol-01.md … vol-06.md
+    └── pdf/               # Printable volume PDFs
 ```
 
 ## Volume guide
@@ -55,6 +59,17 @@ By the end of this course, you should be able to:
 | [Vol. 03](notes/vol-03.md) | L19–L27 | Diffusion models, sequence models, transformers |
 | [Vol. 04](notes/vol-04.md) | L28–L36 | LLMs, RAG, multimodal AI, ethics |
 
+### Transcript-grounded notes (`notes-2/`)
+
+| Volume | Lectures | Topics |
+|--------|----------|--------|
+| [Vol. 01](notes-2/vol-01.md) | Intro, Lec 01–09 | DL foundations for GenAI |
+| [Vol. 02](notes-2/vol-02.md) | Lec 10–18 | Autoencoders |
+| [Vol. 03](notes-2/vol-03.md) | Lec 19–30 | KL divergence, VAEs, CVAE |
+| [Vol. 04](notes-2/vol-04.md) | Lec 31–43 | GANs and variants |
+| [Vol. 05](notes-2/vol-05.md) | Lec 44–53 | Diffusion models |
+| [Vol. 06](notes-2/vol-06.md) | Lec 54–63 | NLP, transformers, LLMs |
+
 ## Building PDFs
 
 From the repository root:
@@ -65,6 +80,15 @@ From the repository root:
 ```
 
 Requires [Pandoc](https://pandoc.org/) and a LaTeX distribution with XeLaTeX.
+
+Rebuild per-video caption PDFs (needs `yt-dlp`, `youtube-transcript-api`, and a SOCKS proxy such as Tor on `127.0.0.1:9050` because YouTube blocks many datacenter IPs):
+
+```bash
+python3 scripts/scrape-genai-transcripts.py
+
+# Transcript-grounded notes-2 volumes (all 64 lectures)
+./scripts/build-notes2-pdfs.sh
+```
 
 ## Official resources
 

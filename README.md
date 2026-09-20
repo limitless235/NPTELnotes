@@ -21,18 +21,18 @@ Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy ar
 |---|---|
 | **Courses** | 5 |
 | **Total lectures** | 210 |
-| **PDF volumes** | 22 |
+| **PDF volumes** | 32 notes volumes (+ transcript PDFs) |
 | **Formats** | Markdown (source) + PDF (export) |
 
 ## Courses
 
 | # | Course | Lectures | PDF split | Folder |
 |---|--------|----------|-----------|--------|
-| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 per-video transcripts | `courses/01-cyber-security-and-privacy/` |
+| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 transcripts + 5 notes-2 | `courses/01-cyber-security-and-privacy/` |
 | 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 5 × 10 + 1 × 12 | `courses/02-ethical-hacking/` |
-| 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 | 4 × 9 | `courses/03-generative-ai-llms/` |
+| 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 condensed + 64 video-grounded | 4 + 6 | `courses/03-generative-ai-llms/` |
 | 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
-| 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 | 4 × 9 | `courses/05-information-security-cec/` |
+| 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 + 48 playlist | 4 × 9 (SWAYAM) + 4 × 12 (notes-2) | `courses/05-information-security-cec/` |
 
 ### Official course links
 
@@ -75,7 +75,7 @@ NPTELnotes/
 │   │   └── pdf/
 │   │       └── vol-01.pdf … vol-06.pdf
 │   │
-│   ├── 03-generative-ai-llms/         # 36 lectures · 4 PDF volumes
+│   ├── 03-generative-ai-llms/         # condensed notes + notes-2 + 64 transcript PDFs
 │   ├── 04-cyber-security-tools-ignou/ # 36 lectures · 4 PDF volumes
 │   │   └── notes/
 │   │       ├── vol-01.md … vol-04.md          # Consolidated volumes
@@ -85,13 +85,21 @@ NPTELnotes/
 │   │       └── vol-01.index.md … vol-04.index.md
 │   │
 │   └── 05-information-security-cec/   # 36 lectures · 4 PDF volumes
+│       ├── notes-2/                   # Transcript-grounded notes (M00–M47) + 4 PDFs
+│       └── transcripts/               # 48 YouTube transcripts (markdown + per-video PDF)
 │
 └── scripts/
     ├── build-pdf.sh                   # Build one volume: mermaid preprocess + pandoc + XeLaTeX
     ├── build-all-pdfs.sh              # Rebuild all 22 PDF volumes
     ├── preprocess-mermaid.py          # Render ```mermaid blocks to PNG for PDF export
     ├── convert-math-for-github.py     # Convert LaTeX math delimiters for GitHub preview
-    └── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
+    ├── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
+    ├── scrape-genai-transcripts.py    # Fetch YouTube captions + build per-video PDFs
+    ├── assemble-notes2.py             # Concatenate CSP notes-2 lectures into 5 volumes
+    ├── assemble-notes2-volumes.py     # Concatenate GenAI notes-2 lectures into print volumes
+    ├── scrape_infosec_youtube_transcripts.py  # CEC Information Security YouTube transcripts → MD/PDF
+    ├── assemble_infosec_notes2.py     # Concatenate InfoSec notes-2 lectures into 4 volumes
+    └── build-notes2-pdfs.sh           # Build notes-2 PDFs (csp|genai|infosec|all)
 ```
 
 ### File conventions

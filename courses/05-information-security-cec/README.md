@@ -33,16 +33,17 @@ By the end of this course, you should be able to:
 05-information-security-cec/
 ├── README.md              # This file
 ├── references.md          # Textbooks and standards
-├── lecture-index.md       # All 36 lectures
-└── notes/
-    ├── vol-01.md          # L01–L09: Security fundamentals, threats
-    ├── vol-01.index.md
-    ├── vol-02.md          # L10–L18: System threats, classical crypto
-    ├── vol-02.index.md
-    ├── vol-03.md          # L19–L27: DES/AES, RSA, DH, ECC
-    ├── vol-03.index.md
-    ├── vol-04.md          # L28–L36: Hash, signatures, PKI, auditing
-    └── vol-04.index.md
+├── lecture-index.md       # 36-lecture SWAYAM week plan
+├── notes/                 # 36-lecture SWAYAM week-plan notes (4 volumes)
+├── notes-2/               # Transcript-grounded notes for the 48-video EMRC playlist
+│   ├── lectures/          # One file per module
+│   ├── vol-01.md … vol-04.md
+│   └── pdf/
+└── transcripts/           # Per-video YouTube transcripts + PDFs (48 videos)
+    ├── README.md
+    ├── M00-….md … M47-….md
+    └── pdf/
+        └── M00-….pdf … M47-….pdf
 ```
 
 ## Volume guide
@@ -63,9 +64,36 @@ From the repository root:
 ./scripts/build-all-pdfs.sh
 ```
 
+## Transcript-grounded notes (`notes-2`)
+
+Full study notes for the **YouTube playlist** (intro + M01–M47), written from the transcripts with diagrams:
+
+| Volume | Modules | File |
+|--------|---------|------|
+| 01 | M00–M11 | [notes-2/vol-01.md](notes-2/vol-01.md) · [PDF](notes-2/pdf/vol-01.pdf) |
+| 02 | M12–M23 | [notes-2/vol-02.md](notes-2/vol-02.md) · [PDF](notes-2/pdf/vol-02.pdf) |
+| 03 | M24–M35 | [notes-2/vol-03.md](notes-2/vol-03.md) · [PDF](notes-2/pdf/vol-03.pdf) |
+| 04 | M36–M47 | [notes-2/vol-04.md](notes-2/vol-04.md) · [PDF](notes-2/pdf/vol-04.pdf) |
+
+Index: [notes-2/README.md](notes-2/README.md)
+
+```bash
+python3 scripts/assemble_infosec_notes2.py
+./scripts/build-notes2-pdfs.sh
+```
+
+## YouTube lecture transcripts
+
+The EMRC Patiala playlist has **47 modules plus an intro video** (network security, protocols, wireless, cloud, DDoS — broader than the 36-lecture SWAYAM week plan). Each video has a paragraph-form transcript PDF (no timestamps):
+
+- Playlist: https://www.youtube.com/playlist?list=PLcWnLUJA-zgdEW1tOYLs7xsZ0lP8gx-6b
+- Index: [transcripts/README.md](transcripts/README.md)
+- PDFs: [transcripts/pdf/](transcripts/pdf/)
+
 ## Official resources
 
 - [Class Central course listing](https://www.classcentral.com/course/swayam-information-security-91683)
+- [YouTube playlist — Information Security](https://www.youtube.com/playlist?list=PLcWnLUJA-zgdEW1tOYLs7xsZ0lP8gx-6b)
 - [SWAYAM platform](https://swayam.gov.in/)
 
 ## Disclaimer

@@ -16,26 +16,32 @@ def render_mermaid(mermaid_src: str, output_png: Path, mmdc: Path) -> None:
     output_png.parent.mkdir(parents=True, exist_ok=True)
     mmd_file = output_png.with_suffix(".mmd")
     mmd_file.write_text(mermaid_src.strip() + "\n", encoding="utf-8")
-    subprocess.run(
-        [
-            str(mmdc),
-            "-i",
-            str(mmd_file),
-            "-o",
-            str(output_png),
-            "-b",
-            "white",
-            "-w",
-            "1400",
-            "-H",
-            "900",
-            "--scale",
-            "2",
-        ],
-        check=True,
+    cmd = [
+        str(mmdc),
+        "-i",
+        str(mmd_file),
+        "-o",
+        str(output_png),
+        "-b",
+        "white",
+        "-w",
+        "1400",
+        "-H",
+        "900",
+        "--scale",
+        "2",
+    ]
+    puppeteer_cfg = Path("/tmp/puppeteer-mmdc.json")
+    if puppeteer_cfg.exists():
+        cmd.extend(["-p", str(puppeteer_cfg)])
+    result = subprocess.run(
+        cmd,
         capture_output=True,
         text=True,
     )
+    if result.returncode != 0:
+        err = (result.stderr or result.stdout or "").strip()
+        raise RuntimeError(f"mermaid-cli failed for {mmd_file}:\n{err}")
     mmd_file.unlink(missing_ok=True)
 
 
@@ -61,7 +67,7 @@ def preprocess_markdown(
         if not image_path.exists():
             try:
                 render_mermaid(mermaid_src, image_path, mmdc)
-            except subprocess.CalledProcessError:
+            except (subprocess.CalledProcessError, RuntimeError):
                 return (
                     "```text\n"
                     + mermaid_src.strip()
