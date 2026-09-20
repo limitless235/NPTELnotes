@@ -3,7 +3,7 @@
 **Course:** 106106248 · **Instructor:** Prof. Saji K. Mathew, IIT Madras  
 **Playlist:** https://www.youtube.com/playlist?list=PLyqSpQzTE6M-jkJEzbS5oHJUp2GWPsq6e
 
-Per-video cleaned transcripts: [transcripts/](transcripts/) (markdown + PDF). PDF copies are also in [`Generative AI/`](../../Generative%20AI/).
+Per-video cleaned transcripts: [transcripts/](transcripts/) (markdown + PDF). PDF copies are also in [`Cyber Security and Privacy/`](../../Cyber%20Security%20and%20Privacy/).
 
 | # | Title | YouTube |
 |---|-------|---------|

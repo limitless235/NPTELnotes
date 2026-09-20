@@ -1,10 +1,10 @@
-# Generative AI / lecture PDFs
+# Cyber Security and Privacy — lecture PDFs
 
-This folder holds **one PDF per YouTube video** from the playlist that was requested:
+One PDF per available YouTube lecture from the NPTEL playlist:
 
 https://www.youtube.com/playlist?list=PLyqSpQzTE6M-jkJEzbS5oHJUp2GWPsq6e
 
-That playlist is NPTEL **Cyber Security and Privacy** (IIT Madras, Prof. Saji K. Mathew), not the IISc Generative AI & LLMs course. Markdown sources and a second copy of these PDFs also live under [`courses/01-cyber-security-and-privacy/transcripts/`](../courses/01-cyber-security-and-privacy/transcripts/). Structured notes for the Generative AI course remain in [`courses/03-generative-ai-llms/`](../courses/03-generative-ai-llms/).
+Markdown sources and matching PDFs also live under [`courses/01-cyber-security-and-privacy/transcripts/`](../courses/01-cyber-security-and-privacy/transcripts/).
 
 ---
 
