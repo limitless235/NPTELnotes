@@ -59,7 +59,15 @@ def preprocess_markdown(
         image_path = images_dir / image_name
 
         if not image_path.exists():
-            render_mermaid(mermaid_src, image_path, mmdc)
+            try:
+                render_mermaid(mermaid_src, image_path, mmdc)
+            except subprocess.CalledProcessError:
+                return (
+                    "```text\n"
+                    + mermaid_src.strip()
+                    + "\n```\n\n"
+                    "*Diagram left as source: mermaid-cli could not parse this block.*\n"
+                )
 
         rel = image_path.relative_to(build_dir).as_posix()
         return f"![Architecture diagram]({rel})"

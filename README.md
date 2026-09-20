@@ -13,7 +13,7 @@ NPTELnotes is a self-contained reference library — not a video mirror or cours
 
 All video links point to public NPTEL, SWAYAM, or YouTube sources. No registration is required.
 
-Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy are in [`courses/01-cyber-security-and-privacy/transcripts/`](courses/01-cyber-security-and-privacy/transcripts/) and mirrored as PDFs in [`Cyber Security and Privacy/`](Cyber%20Security%20and%20Privacy/).
+Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy are in [`courses/01-cyber-security-and-privacy/transcripts/`](courses/01-cyber-security-and-privacy/transcripts/) and mirrored as PDFs in [`Cyber Security and Privacy/`](Cyber%20Security%20and%20Privacy/). Transcript-grounded notes (notes-2) are in [`courses/01-cyber-security-and-privacy/notes-2/`](courses/01-cyber-security-and-privacy/notes-2/) with PDF copies in [`Cyber Security and Privacy/notes 2/`](Cyber%20Security%20and%20Privacy/notes%202/).
 
 ## At a glance
 
