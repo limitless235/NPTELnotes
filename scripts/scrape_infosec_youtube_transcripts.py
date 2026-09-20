@@ -76,6 +76,36 @@ def parse_cues(raw: str) -> list[tuple[str, str]]:
     return cues
 
 
+def pdf_safe(text: str) -> str:
+    text = "".join(ch if (ch == "\n" or (ch.isprintable() and ord(ch) < 0x3000)) else " " for ch in text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def cues_to_paragraphs(cues: list[tuple[str, str]], target: int = 520) -> list[str]:
+    """Join timestamped cues into readable paragraphs with no timestamps."""
+    paras: list[str] = []
+    cur: list[str] = []
+    cur_len = 0
+    for _ts, text in cues:
+        t = pdf_safe(text)
+        if not t or DUR_RE.match(t) or len(t) <= 1:
+            continue
+        if re.fullmatch(r"\[(?:music|applause|silence|inaudible)\]", t, re.I):
+            if cur:
+                paras.append(" ".join(cur))
+                cur, cur_len = [], 0
+            continue
+        cur.append(t)
+        cur_len += len(t) + 1
+        ends_sentence = t[-1] in ".?!"
+        if cur_len >= target and (ends_sentence or cur_len >= target + 180):
+            paras.append(" ".join(cur))
+            cur, cur_len = [], 0
+    if cur:
+        paras.append(" ".join(cur))
+    return paras
+
+
 def format_duration(seconds: int) -> str:
     m, s = divmod(int(seconds), 60)
     h, m = divmod(m, 60)
@@ -190,22 +220,20 @@ def write_pdf(path: Path, meta: dict, cues: list[tuple[str, str]]) -> None:
     pdf.line(12, pdf.get_y(), 198, pdf.get_y())
     pdf.ln(4)
 
-    if not cues:
+    paragraphs = cues_to_paragraphs(cues)
+    if not paragraphs:
         pdf.set_font("DejaVu", "", 11)
         pdf.set_text_color(150, 0, 0)
         pdf.multi_cell(0, 7, "Transcript could not be retrieved for this video.")
     else:
-        for ts, text in cues:
-            if pdf.get_y() > 270:
+        pdf.set_font("DejaVu", "", 11)
+        pdf.set_text_color(25, 25, 25)
+        for para in paragraphs:
+            if pdf.get_y() > 262:
                 pdf.add_page()
             pdf.set_x(pdf.l_margin)
-            pdf.set_font("DejaVuSans", "", 8)
-            pdf.set_text_color(33, 97, 140)
-            pdf.cell(22, 6, ts)
-            pdf.set_font("DejaVu", "", 11)
-            pdf.set_text_color(25, 25, 25)
-            pdf.multi_cell(0, 6, text)
-            pdf.ln(0.8)
+            pdf.multi_cell(0, 6.4, para, align="J")
+            pdf.ln(3.2)
 
     pdf.output(str(path))
 
@@ -327,5 +355,51 @@ def main() -> None:
     print("done", len(records))
 
 
+CUE_MD_RE = re.compile(r"^\*\*\[(.+?)\]\*\*\s*(.*)$")
+
+
+def parse_markdown_cues(path: Path) -> list[tuple[str, str]]:
+    cues: list[tuple[str, str]] = []
+    for ln in path.read_text(encoding="utf-8").splitlines():
+        m = CUE_MD_RE.match(ln)
+        if m:
+            cues.append((m.group(1), m.group(2)))
+    return cues
+
+
+def regen_pdfs_from_markdown() -> None:
+    records = json.loads(META_PATH.read_text())
+    by_stem = {r["stem"]: r for r in records}
+    OUT_PDF.mkdir(parents=True, exist_ok=True)
+    md_files = sorted(OUT_MD.glob("M*.md"))
+    for i, md_path in enumerate(md_files, 1):
+        rec = by_stem.get(md_path.stem)
+        if rec is None:
+            rec = {
+                "module_name": md_path.stem,
+                "label": md_path.stem[:3],
+                "duration": 0,
+                "url": "",
+                "expert": "",
+            }
+            for ln in md_path.read_text(encoding="utf-8").splitlines()[:12]:
+                if ln.startswith("# "):
+                    rec["module_name"] = ln[2:].strip()
+                elif ln.startswith("**") and "Module" in ln:
+                    rec["label"] = ln.strip("* ").strip()
+                elif ln.startswith("Video:"):
+                    rec["url"] = ln.split(" ", 1)[-1].strip()
+        cues = parse_markdown_cues(md_path)
+        pdf_path = OUT_PDF / f"{md_path.stem}.pdf"
+        print(f"[{i}/{len(md_files)}] {md_path.stem} paras={len(cues_to_paragraphs(cues))}", flush=True)
+        write_pdf(pdf_path, rec, cues)
+    print("regenerated", len(md_files), "pdfs")
+
+
 if __name__ == "__main__":
-    main()
+    import sys
+
+    if "--from-markdown" in sys.argv:
+        regen_pdfs_from_markdown()
+    else:
+        main()

@@ -62,7 +62,7 @@ From the repository root:
 
 ## YouTube lecture transcripts
 
-The EMRC Patiala playlist has **47 modules plus an intro video** (network security, protocols, wireless, cloud, DDoS — broader than the 36-lecture SWAYAM week plan). Each video has a timestamped transcript PDF:
+The EMRC Patiala playlist has **47 modules plus an intro video** (network security, protocols, wireless, cloud, DDoS — broader than the 36-lecture SWAYAM week plan). Each video has a paragraph-form transcript PDF (no timestamps):
 
 - Playlist: https://www.youtube.com/playlist?list=PLcWnLUJA-zgdEW1tOYLs7xsZ0lP8gx-6b
 - Index: [transcripts/README.md](transcripts/README.md)

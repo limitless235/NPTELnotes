@@ -13,7 +13,7 @@ Subject experts vary by module (Punjabi University Patiala, PAU Ludhiana, and ot
 
 1. Open the PDF in `pdf/` to read along with the video.
 2. Or open the matching `.md` file on GitHub.
-3. Timestamps (`[m:ss]`) match the YouTube player.
+3. PDFs are continuous paragraphs (no timestamps). Markdown still has `[m:ss]` cues if you want to jump in the video.
 
 These are auto-generated captions cleaned into readable cues. They are **personal study aids**, not official CEC/SWAYAM publications. Spoken wording and video rights remain with CEC, SWAYAM, EMRC Patiala, and the instructors.
 
@@ -77,6 +77,10 @@ This YouTube series (47 modules) is broader than the 36-lecture SWAYAM week plan
 From the repository root (requires Playwright + Chromium and `fpdf2`):
 
 ```bash
+# Rebuild PDFs from existing markdown (paragraphs, no timestamps)
+python3 scripts/scrape_infosec_youtube_transcripts.py --from-markdown
+
+# Re-scrape YouTube (also refreshes markdown)
 python3 scripts/scrape_infosec_youtube_transcripts.py
 ```
 
