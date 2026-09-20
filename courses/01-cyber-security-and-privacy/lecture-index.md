@@ -3,6 +3,8 @@
 **Course:** 106106248 · **Instructor:** Prof. Saji K. Mathew, IIT Madras  
 **Playlist:** https://www.youtube.com/playlist?list=PLyqSpQzTE6M-jkJEzbS5oHJUp2GWPsq6e
 
+Per-video cleaned transcripts: [transcripts/](transcripts/) (markdown + PDF). PDF copies are also in [`Generative AI/`](../../Generative%20AI/).
+
 | # | Title | YouTube |
 |---|-------|---------|
 | 1 | Introduction — Part 1 | https://www.youtube.com/watch?v=2d5fKqo6zDc |
