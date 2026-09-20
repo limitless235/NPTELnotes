@@ -73,7 +73,7 @@ NPTELnotes/
 │   │   └── pdf/
 │   │       └── vol-01.pdf … vol-06.pdf
 │   │
-│   ├── 03-generative-ai-llms/         # 36 lectures · 4 PDF volumes
+│   ├── 03-generative-ai-llms/         # 36 lecture notes + 64 video transcript PDFs
 │   ├── 04-cyber-security-tools-ignou/ # 36 lectures · 4 PDF volumes
 │   │   └── notes/
 │   │       ├── vol-01.md … vol-04.md          # Consolidated volumes
@@ -89,7 +89,8 @@ NPTELnotes/
     ├── build-all-pdfs.sh              # Rebuild all 22 PDF volumes
     ├── preprocess-mermaid.py          # Render ```mermaid blocks to PNG for PDF export
     ├── convert-math-for-github.py     # Convert LaTeX math delimiters for GitHub preview
-    └── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
+    ├── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
+    └── scrape-genai-transcripts.py    # Fetch YouTube captions + build per-video PDFs
 ```
 
 ### File conventions

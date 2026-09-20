@@ -1,2 +1,4 @@
 scripts/node_modules/
+scripts/__pycache__/
 **/.pdf-build/
+courses/03-generative-ai-llms/transcripts/raw/

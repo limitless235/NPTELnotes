@@ -9,6 +9,8 @@
 
 This course develops the **mathematical and algorithmic foundations** of modern generative artificial intelligence—from deep learning prerequisites through variational autoencoders, GANs, diffusion models, transformers, and large language models. The material is organized as **36 lectures** (3 per week × 12 weeks), aligned with the official NPTEL syllabus. Weeks 1–9 correspond to approximately **58 official NPTEL video lectures**; this repository consolidates that content into a structured lecture sequence with expanded derivations and diagrams.
 
+Per-video **YouTube caption transcripts** (intro + 63 lectures) are in [`transcripts/`](transcripts/), with one markdown file and one PDF per video from the [official playlist](https://www.youtube.com/playlist?list=PLgMDNELGJ1Ca_DduFvH6qfI1eapL48xOr).
+
 ## Learning outcomes
 
 By the end of this course, you should be able to:
@@ -35,6 +37,10 @@ By the end of this course, you should be able to:
 ├── README.md              # This file
 ├── references.md          # Textbooks and papers
 ├── lecture-index.md       # All 36 lectures with NPTEL mapping
+├── transcripts/           # One caption transcript per official YouTube video
+│   ├── README.md          # Index of intro + Lec 01–63
+│   ├── 00-….md … 63-….md
+│   └── pdf/               # Printable PDF for each video
 └── notes/
     ├── vol-01.md          # L01–L09: DL foundations, autoencoders, VAE
     ├── vol-01.index.md
@@ -65,6 +71,12 @@ From the repository root:
 ```
 
 Requires [Pandoc](https://pandoc.org/) and a LaTeX distribution with XeLaTeX.
+
+Rebuild per-video caption PDFs (needs `yt-dlp`, `youtube-transcript-api`, and a SOCKS proxy such as Tor on `127.0.0.1:9050` because YouTube blocks many datacenter IPs):
+
+```bash
+python3 scripts/scrape-genai-transcripts.py
+```
 
 ## Official resources
 
