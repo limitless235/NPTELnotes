@@ -90,7 +90,9 @@ NPTELnotes/
     ├── preprocess-mermaid.py          # Render ```mermaid blocks to PNG for PDF export
     ├── convert-math-for-github.py     # Convert LaTeX math delimiters for GitHub preview
     ├── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
-    └── scrape-genai-transcripts.py    # Fetch YouTube captions + build per-video PDFs
+    ├── scrape-genai-transcripts.py    # Fetch YouTube captions + build per-video PDFs
+    ├── assemble-notes2-volumes.py     # Concatenate notes-2 lectures into print volumes
+    └── build-notes2-pdfs.sh           # Build transcript-grounded GenAI notes PDFs
 ```
 
 ### File conventions

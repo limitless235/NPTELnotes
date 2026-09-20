@@ -6,6 +6,8 @@ Weeks 1–9 map to approximately **58 official NPTEL video lectures**. This inde
 
 Verbatim YouTube captions for every official video (intro + Lec 01–63) are in [`transcripts/`](transcripts/) as markdown and PDF.
 
+Study notes grounded on those transcripts (one file per lecture, six PDF volumes) are in [`notes-2/`](notes-2/).
+
 ---
 
 ## Week 1 — Fundamentals of Deep Learning for Generative AI
