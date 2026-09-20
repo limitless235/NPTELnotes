@@ -83,13 +83,15 @@ NPTELnotes/
 │   │       └── vol-01.index.md … vol-04.index.md
 │   │
 │   └── 05-information-security-cec/   # 36 lectures · 4 PDF volumes
+│       └── transcripts/               # 48 YouTube transcripts (markdown + per-video PDF)
 │
 └── scripts/
     ├── build-pdf.sh                   # Build one volume: mermaid preprocess + pandoc + XeLaTeX
     ├── build-all-pdfs.sh              # Rebuild all 22 PDF volumes
     ├── preprocess-mermaid.py          # Render ```mermaid blocks to PNG for PDF export
     ├── convert-math-for-github.py     # Convert LaTeX math delimiters for GitHub preview
-    └── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
+    ├── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
+    └── scrape_infosec_youtube_transcripts.py  # CEC Information Security YouTube transcripts → MD/PDF
 ```
 
 ### File conventions

@@ -125,6 +125,18 @@
 
 ---
 
+## YouTube playlist transcripts (47 modules + intro)
+
+The public EMRC playlist is longer than this 36-lecture week plan. Per-video transcripts and PDFs:
+
+- Playlist: https://www.youtube.com/playlist?list=PLcWnLUJA-zgdEW1tOYLs7xsZ0lP8gx-6b
+- Full index: [transcripts/README.md](transcripts/README.md)
+
+| | |
+|---|---|
+| Intro + M01–M47 markdown | [transcripts/](transcripts/) |
+| One PDF per video | [transcripts/pdf/](transcripts/pdf/) |
+
 ## Volume cross-reference
 
 | Volume | Lectures | File |
