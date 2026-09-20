@@ -13,4 +13,13 @@ These notes follow the **official YouTube lectures** (intro + Lec 01–63), not 
 | [vol-05](vol-05.md) | Lec 44–53 | Diffusion models |
 | [vol-06](vol-06.md) | Lec 54–63 | NLP, transformers, LLMs |
 
-Per-lecture source files: `L00-….md` … `L63-….md`. Printable PDFs are in [`pdf/`](pdf/).
+Per-lecture source files: `L00-….md` … `L63-….md`. Printable PDFs:
+
+| PDF | Pages |
+|-----|-------|
+| [`pdf/vol-01.pdf`](pdf/vol-01.pdf) | 63 |
+| [`pdf/vol-02.pdf`](pdf/vol-02.pdf) | 64 |
+| [`pdf/vol-03.pdf`](pdf/vol-03.pdf) | 81 |
+| [`pdf/vol-04.pdf`](pdf/vol-04.pdf) | 90 |
+| [`pdf/vol-05.pdf`](pdf/vol-05.pdf) | 68 |
+| [`pdf/vol-06.pdf`](pdf/vol-06.pdf) | 73 |

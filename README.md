@@ -19,7 +19,7 @@ All video links point to public NPTEL, SWAYAM, or YouTube sources. No registrati
 |---|---|
 | **Courses** | 5 |
 | **Total lectures** | 210 |
-| **PDF volumes** | 22 |
+| **PDF volumes** | 28 notes volumes (+ 64 GenAI transcript PDFs) |
 | **Formats** | Markdown (source) + PDF (export) |
 
 ## Courses
@@ -28,7 +28,7 @@ All video links point to public NPTEL, SWAYAM, or YouTube sources. No registrati
 |---|--------|----------|-----------|--------|
 | 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 | `courses/01-cyber-security-and-privacy/` |
 | 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 5 × 10 + 1 × 12 | `courses/02-ethical-hacking/` |
-| 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 | 4 × 9 | `courses/03-generative-ai-llms/` |
+| 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 condensed + 64 video-grounded | 4 + 6 | `courses/03-generative-ai-llms/` |
 | 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
 | 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 | 4 × 9 | `courses/05-information-security-cec/` |
 
@@ -73,7 +73,7 @@ NPTELnotes/
 │   │   └── pdf/
 │   │       └── vol-01.pdf … vol-06.pdf
 │   │
-│   ├── 03-generative-ai-llms/         # 36 lecture notes + 64 video transcript PDFs
+│   ├── 03-generative-ai-llms/         # condensed notes + notes-2 + 64 transcript PDFs
 │   ├── 04-cyber-security-tools-ignou/ # 36 lectures · 4 PDF volumes
 │   │   └── notes/
 │   │       ├── vol-01.md … vol-04.md          # Consolidated volumes

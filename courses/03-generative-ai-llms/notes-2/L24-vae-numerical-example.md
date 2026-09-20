@@ -271,12 +271,12 @@ $$
 Per-coordinate pieces:
 
 $$
-\begin{align*}
+\begin{aligned}
 \mu_1^2 + \sigma_1^2 - 1 - \log\sigma_1^2
 &\approx 0.001849 + 2.079 - 1 - 0.732 = 0.3488,\\[4pt]
 \mu_2^2 + \sigma_2^2 - 1 - \log\sigma_2^2
 &\approx 0.3036 + 1.353 - 1 - 0.302 = 0.3546.
-\end{align*}
+\end{aligned}
 $$
 
 Sum, then **divide by 2**:

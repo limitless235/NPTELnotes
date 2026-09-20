@@ -2196,13 +2196,13 @@ If cycle consistency is **off**, $G$ can emit **any** plausible zebra and $F$ ca
 flowchart TB
     subgraph fwd [Forward cycle]
       H1[horse x] --> G1[G]
-      G1 --> Z1[zebra G(x)]
+      G1 --> Z1["zebra G(x)"]
       Z1 --> F1[F]
       F1 --> H1r["F(G(x)) ≈ x"]
     end
     subgraph bwd [Backward cycle]
       Z2[zebra y] --> F2[F]
-      F2 --> H2[horse F(y)]
+      F2 --> H2["horse F(y)"]
       H2 --> G2[G]
       G2 --> Z2r["G(F(y)) ≈ y"]
     end

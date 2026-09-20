@@ -16,22 +16,26 @@ def render_mermaid(mermaid_src: str, output_png: Path, mmdc: Path) -> None:
     output_png.parent.mkdir(parents=True, exist_ok=True)
     mmd_file = output_png.with_suffix(".mmd")
     mmd_file.write_text(mermaid_src.strip() + "\n", encoding="utf-8")
+    cmd = [
+        str(mmdc),
+        "-i",
+        str(mmd_file),
+        "-o",
+        str(output_png),
+        "-b",
+        "white",
+        "-w",
+        "1400",
+        "-H",
+        "900",
+        "--scale",
+        "2",
+    ]
+    puppeteer_cfg = Path("/tmp/puppeteer-mmdc.json")
+    if puppeteer_cfg.exists():
+        cmd.extend(["-p", str(puppeteer_cfg)])
     subprocess.run(
-        [
-            str(mmdc),
-            "-i",
-            str(mmd_file),
-            "-o",
-            str(output_png),
-            "-b",
-            "white",
-            "-w",
-            "1400",
-            "-H",
-            "900",
-            "--scale",
-            "2",
-        ],
+        cmd,
         check=True,
         capture_output=True,
         text=True,
