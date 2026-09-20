@@ -31,6 +31,7 @@ The course is designed for students who need a **wholesome understanding** of cy
 | [notes/vol-02-lectures-11-20.md](notes/vol-02-lectures-11-20.md) | Detailed notes, Lectures 11–20 |
 | [diagrams/cia-triad.md](diagrams/cia-triad.md) | Mermaid CIA triad diagram |
 | [transcripts/](transcripts/) | Per-video cleaned YouTube transcripts (markdown + PDF) |
+| [notes-2/](notes-2/) | Transcript-grounded notes (5 PDF volumes) |
 
 ## Weekly syllabus (NPTEL)
 

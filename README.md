@@ -13,7 +13,7 @@ NPTELnotes is a self-contained reference library — not a video mirror or cours
 
 All video links point to public NPTEL, SWAYAM, or YouTube sources. No registration is required.
 
-Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy are in [`courses/01-cyber-security-and-privacy/transcripts/`](courses/01-cyber-security-and-privacy/transcripts/) and mirrored as PDFs in [`Cyber Security and Privacy/`](Cyber%20Security%20and%20Privacy/).
+Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy are in [`courses/01-cyber-security-and-privacy/transcripts/`](courses/01-cyber-security-and-privacy/transcripts/) and mirrored as PDFs in [`Cyber Security and Privacy/`](Cyber%20Security%20and%20Privacy/). Transcript-grounded notes (notes-2) are in [`courses/01-cyber-security-and-privacy/notes-2/`](courses/01-cyber-security-and-privacy/notes-2/) with PDF copies in [`Cyber Security and Privacy/notes 2/`](Cyber%20Security%20and%20Privacy/notes%202/).
 
 ## At a glance
 
@@ -28,7 +28,7 @@ Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy ar
 
 | # | Course | Lectures | PDF split | Folder |
 |---|--------|----------|-----------|--------|
-| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 per-video transcripts | `courses/01-cyber-security-and-privacy/` |
+| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 transcripts + 5 notes-2 | `courses/01-cyber-security-and-privacy/` |
 | 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 5 × 10 + 1 × 12 | `courses/02-ethical-hacking/` |
 | 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 condensed + 64 video-grounded | 4 + 6 | `courses/03-generative-ai-llms/` |
 | 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
@@ -95,10 +95,11 @@ NPTELnotes/
     ├── convert-math-for-github.py     # Convert LaTeX math delimiters for GitHub preview
     ├── generate-cst-lectures.py       # Helper used to scaffold IGNOU lecture files
     ├── scrape-genai-transcripts.py    # Fetch YouTube captions + build per-video PDFs
+    ├── assemble-notes2.py             # Concatenate CSP notes-2 lectures into 5 volumes
     ├── assemble-notes2-volumes.py     # Concatenate GenAI notes-2 lectures into print volumes
     ├── scrape_infosec_youtube_transcripts.py  # CEC Information Security YouTube transcripts → MD/PDF
     ├── assemble_infosec_notes2.py     # Concatenate InfoSec notes-2 lectures into 4 volumes
-    └── build-notes2-pdfs.sh           # Build notes-2 volume PDFs (GenAI and/or InfoSec)
+    └── build-notes2-pdfs.sh           # Build notes-2 PDFs (csp|genai|infosec|all)
 ```
 
 ### File conventions

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build notes-2 volume PDFs (mermaid preprocess + pandoc + XeLaTeX).
-# Usage: ./scripts/build-notes2-pdfs.sh [all|genai|infosec]
+# Usage: ./scripts/build-notes2-pdfs.sh [all|csp|genai|infosec]
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TARGET="${1:-all}"
@@ -33,9 +33,20 @@ build_one() {
   echo "Built: $output"
 }
 
-if [[ "$TARGET" != "all" && "$TARGET" != "genai" && "$TARGET" != "infosec" ]]; then
-  echo "Usage: $0 [all|genai|infosec]" >&2
+if [[ "$TARGET" != "all" && "$TARGET" != "csp" && "$TARGET" != "genai" && "$TARGET" != "infosec" ]]; then
+  echo "Usage: $0 [all|csp|genai|infosec]" >&2
   exit 1
+fi
+
+if [[ "$TARGET" == "all" || "$TARGET" == "csp" ]]; then
+  python3 "$ROOT/scripts/assemble-notes2.py"
+  CSP="$ROOT/courses/01-cyber-security-and-privacy/notes-2"
+  MIRROR="$ROOT/Cyber Security and Privacy/notes 2"
+  mkdir -p "$MIRROR"
+  for v in vol-01.md vol-02.md vol-03.md vol-04.md vol-05.md; do
+    build_one "$CSP" "$v"
+    cp "$CSP/pdf/${v%.md}.pdf" "$MIRROR/${v%.md}.pdf"
+  done
 fi
 
 if [[ "$TARGET" == "all" || "$TARGET" == "genai" ]]; then
