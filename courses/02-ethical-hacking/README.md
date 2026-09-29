@@ -11,6 +11,21 @@
 
 Concise, tool-focused study notes for the NPTEL *Ethical Hacking* course. Each lecture covers key concepts, offensive techniques, defensive countermeasures, and exam-ready bullets.
 
+## Transcript-grounded notes (`notes-2/`)
+
+Six printable PDF volumes built from YouTube/Digimat lecture captions (62 lectures). Markdown sources stay local; only PDFs are versioned.
+
+| Volume | Lectures | PDF |
+|--------|----------|-----|
+| 01 | L01–L10 | [notes-2/pdf/vol-01.pdf](notes-2/pdf/vol-01.pdf) |
+| 02 | L11–L20 | [notes-2/pdf/vol-02.pdf](notes-2/pdf/vol-02.pdf) |
+| 03 | L21–L30 | [notes-2/pdf/vol-03.pdf](notes-2/pdf/vol-03.pdf) |
+| 04 | L31–L40 | [notes-2/pdf/vol-04.pdf](notes-2/pdf/vol-04.pdf) |
+| 05 | L41–L50 | [notes-2/pdf/vol-05.pdf](notes-2/pdf/vol-05.pdf) |
+| 06 | L51–L62 | [notes-2/pdf/vol-06.pdf](notes-2/pdf/vol-06.pdf) |
+
+Rebuild: `python3 scripts/scrape_ethical_hacking_transcripts.py` → `python3 scripts/generate_ethical_hacking_notes2.py` → `./scripts/build-notes2-pdfs.sh ethical-hacking`
+
 ## Structure
 
 ```
@@ -18,6 +33,7 @@ Concise, tool-focused study notes for the NPTEL *Ethical Hacking* course. Each l
 ├── README.md              ← this file
 ├── lecture-index.md       ← all 62 lecture titles with links
 ├── references.md          ← textbooks and tool documentation
+├── notes-2/pdf/           ← transcript-grounded PDF volumes (6)
 └── notes/
     ├── vol-01.md            ← Lectures 1–10  (Networking foundations)
     ├── vol-01.index.md

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build notes-2 volume PDFs (mermaid preprocess + pandoc + XeLaTeX).
-# Usage: ./scripts/build-notes2-pdfs.sh [all|csp|genai|infosec]
+# Usage: ./scripts/build-notes2-pdfs.sh [all|csp|genai|infosec|ethical-hacking]
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TARGET="${1:-all}"
@@ -33,8 +33,8 @@ build_one() {
   echo "Built: $output"
 }
 
-if [[ "$TARGET" != "all" && "$TARGET" != "csp" && "$TARGET" != "genai" && "$TARGET" != "infosec" ]]; then
-  echo "Usage: $0 [all|csp|genai|infosec]" >&2
+if [[ "$TARGET" != "all" && "$TARGET" != "csp" && "$TARGET" != "genai" && "$TARGET" != "infosec" && "$TARGET" != "ethical-hacking" ]]; then
+  echo "Usage: $0 [all|csp|genai|infosec|ethical-hacking]" >&2
   exit 1
 fi
 
@@ -61,6 +61,14 @@ if [[ "$TARGET" == "all" || "$TARGET" == "infosec" ]]; then
   INFOSEC="$ROOT/courses/05-information-security-cec/notes-2"
   for v in vol-01.md vol-02.md vol-03.md vol-04.md; do
     build_one "$INFOSEC" "$v"
+  done
+fi
+
+if [[ "$TARGET" == "all" || "$TARGET" == "ethical-hacking" ]]; then
+  python3 "$ROOT/scripts/assemble_ethical_hacking_notes2.py"
+  EH="$ROOT/courses/02-ethical-hacking/notes-2"
+  for v in vol-01.md vol-02.md vol-03.md vol-04.md vol-05.md vol-06.md; do
+    build_one "$EH" "$v"
   done
 fi
 
