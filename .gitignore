@@ -7,5 +7,6 @@ courses/02-ethical-hacking/transcripts/*
 courses/02-ethical-hacking/notes-2/lectures/
 courses/02-ethical-hacking/notes-2/vol-*.md
 courses/02-ethical-hacking/notes-2/*.index.md
+courses/02-ethical-hacking/notes-2/README.md
 !courses/02-ethical-hacking/notes-2/pdf/
 !courses/02-ethical-hacking/notes-2/pdf/**
