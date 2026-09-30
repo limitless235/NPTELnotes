@@ -23,6 +23,7 @@ Six printable PDF volumes built from YouTube/Digimat lecture captions (62 lectur
 | 04 | L31–L40 | [notes-2/pdf/vol-04.pdf](notes-2/pdf/vol-04.pdf) |
 | 05 | L41–L50 | [notes-2/pdf/vol-05.pdf](notes-2/pdf/vol-05.pdf) |
 | 06 | L51–L62 | [notes-2/pdf/vol-06.pdf](notes-2/pdf/vol-06.pdf) |
+| **Midsem** | **Weeks 1–5 (full syllabus)** | [notes-2/pdf/midsem-week1-5.pdf](notes-2/pdf/midsem-week1-5.pdf) |
 
 Rebuild: `python3 scripts/scrape_ethical_hacking_transcripts.py` → `python3 scripts/generate_ethical_hacking_notes2.py` → `./scripts/build-notes2-pdfs.sh ethical-hacking`
 
