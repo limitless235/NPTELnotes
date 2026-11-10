@@ -32,6 +32,7 @@ The course is designed for students who need a **wholesome understanding** of cy
 | [diagrams/cia-triad.md](diagrams/cia-triad.md) | Mermaid CIA triad diagram |
 | [transcripts/](transcripts/) | Per-video cleaned YouTube transcripts (markdown + PDF) |
 | [notes-2/](notes-2/) | Transcript-grounded notes (5 PDF volumes) |
+| [notes-3/](notes-3/) | Concept exam notes — definitions & what topics do (5 slim PDFs; mirrored in `Cyber Security and Privacy/notes 3/`) |
 
 ## Weekly syllabus (NPTEL)
 

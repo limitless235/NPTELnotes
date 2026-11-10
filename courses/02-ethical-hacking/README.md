@@ -27,6 +27,16 @@ Six printable PDF volumes built from YouTube/Digimat lecture captions (62 lectur
 
 Rebuild: `python3 scripts/scrape_ethical_hacking_transcripts.py` → `python3 scripts/generate_ethical_hacking_notes2.py` → `./scripts/build-notes2-pdfs.sh ethical-hacking`
 
+## Concept exam notes (`notes-3/`)
+
+Shorter concept packs for mid-sem style questions (what things *are* / what they *do*). Lab command dumps and transcript filler removed; full lecture topic coverage kept. See [`notes-3/`](notes-3/).
+
+| Volume | Lectures | PDF |
+|--------|----------|-----|
+| 01–06 | L01–L62 | [notes-3/pdf/](notes-3/pdf/) |
+
+Rebuild: `python3 scripts/condense_notes3_ethical_hacking.py` → `./scripts/build-notes3-pdfs.sh ethical-hacking`
+
 ## Structure
 
 ```
@@ -35,6 +45,7 @@ Rebuild: `python3 scripts/scrape_ethical_hacking_transcripts.py` → `python3 sc
 ├── lecture-index.md       ← all 62 lecture titles with links
 ├── references.md          ← textbooks and tool documentation
 ├── notes-2/pdf/           ← transcript-grounded PDF volumes (6)
+├── notes-3/               ← concept exam notes (6 slim PDFs)
 └── notes/
     ├── vol-01.md            ← Lectures 1–10  (Networking foundations)
     ├── vol-01.index.md

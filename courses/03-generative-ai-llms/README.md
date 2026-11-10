@@ -13,6 +13,8 @@ Per-video **YouTube caption transcripts** (intro + 63 lectures) are in [`transcr
 
 **Transcript-grounded study notes** covering every official video (nothing skipped) are in [`notes-2/`](notes-2/), with six printable PDF volumes.
 
+**Concept exam notes** (`notes-3/`) strip lab click-paths and long derivations into definition / “what it does” packs for breadth-first revision — see [`notes-3/`](notes-3/).
+
 ## Learning outcomes
 
 By the end of this course, you should be able to:
