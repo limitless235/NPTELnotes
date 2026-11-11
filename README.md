@@ -31,7 +31,7 @@ Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy ar
 | 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 transcripts + 5 notes-2 + 5 notes-3 | `courses/01-cyber-security-and-privacy/` |
 | 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 6 notes + 6 notes-2 + 6 notes-3 | `courses/02-ethical-hacking/` |
 | 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 condensed + 64 video-grounded | 4 + 6 notes-2 + 6 notes-3 | `courses/03-generative-ai-llms/` |
-| 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
+| 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 + 4 notes-3 | `courses/04-cyber-security-tools-ignou/` |
 | 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 + 48 playlist | 4 × 9 (SWAYAM) + 4 notes-2 + 4 notes-3 | `courses/05-information-security-cec/` |
 
 ### Official course links
