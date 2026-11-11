@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build notes-3 volume PDFs (pandoc + XeLaTeX). No mermaid preprocess — concept notes are text/tables.
-# Usage: ./scripts/build-notes3-pdfs.sh [all|csp|ethical-hacking|genai|infosec]
+# Usage: ./scripts/build-notes3-pdfs.sh [all|csp|ethical-hacking|genai|infosec|ignou]
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 TARGET="${1:-all}"
@@ -30,8 +30,8 @@ build_one() {
   echo "Built: $output ($(du -h "$output" | cut -f1))"
 }
 
-if [[ "$TARGET" != "all" && "$TARGET" != "csp" && "$TARGET" != "genai" && "$TARGET" != "infosec" && "$TARGET" != "ethical-hacking" ]]; then
-  echo "Usage: $0 [all|csp|genai|infosec|ethical-hacking]" >&2
+if [[ "$TARGET" != "all" && "$TARGET" != "csp" && "$TARGET" != "genai" && "$TARGET" != "infosec" && "$TARGET" != "ethical-hacking" && "$TARGET" != "ignou" ]]; then
+  echo "Usage: $0 [all|csp|genai|infosec|ethical-hacking|ignou]" >&2
   exit 1
 fi
 
@@ -63,6 +63,13 @@ if [[ "$TARGET" == "all" || "$TARGET" == "infosec" ]]; then
   INFOSEC="$ROOT/courses/05-information-security-cec/notes-3"
   for v in vol-01.md vol-02.md vol-03.md vol-04.md; do
     build_one "$INFOSEC" "$v"
+  done
+fi
+
+if [[ "$TARGET" == "all" || "$TARGET" == "ignou" ]]; then
+  IGNOU="$ROOT/courses/04-cyber-security-tools-ignou/notes-3"
+  for v in vol-01.md vol-02.md vol-03.md vol-04.md; do
+    build_one "$IGNOU" "$v"
   done
 fi
 

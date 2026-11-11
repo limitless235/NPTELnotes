@@ -18,12 +18,21 @@ All practical work must be performed only on **authorized lab systems** you own 
 |------|-------------|
 | [`lecture-index.md`](lecture-index.md) | Full list of 36 lecture titles with week mapping |
 | [`references.md`](references.md) | Textbooks, SLMs, and external resources |
-| [`vol-01/`](vol-01/) | Lectures 1–9 — Essentials, APT/Kill Chain, Firewalls |
-| [`vol-02/`](vol-02/) | Lectures 10–18 — Wireless, web scanning, app inspection |
-| [`vol-03/`](vol-03/) | Lectures 19–27 — Web attacks, IDS, assurance, malware |
-| [`vol-04/`](vol-04/) | Lectures 28–36 — E-commerce, social engineering, cyber law |
+| [`notes/`](notes/) | Per-lecture markdown + consolidated `vol-XX.md` (PDF source) |
+| [`pdf/`](pdf/) | Printable volume PDFs (4 × 9 lectures) |
+| [`notes-3/`](notes-3/) | Concept exam packs condensed from `pdf/` volumes |
 
-Each volume includes a `.index.md` quick-reference and a consolidated `vol-XX.md` for PDF export.
+Each notes volume includes a `.index.md` quick-reference and a consolidated `vol-XX.md` for PDF export.
+
+## Concept exam notes (`notes-3/`)
+
+Shorter concept packs for mid-sem style questions (what tools/topics *are* / what they *do*). Lab command dumps removed; full lecture topic coverage kept. Condensed from the course `pdf/` volumes (no notes-2 for this course). See [`notes-3/`](notes-3/).
+
+| Volume | Lectures | PDF |
+|--------|----------|-----|
+| 01–04 | L01–L36 | [notes-3/pdf/](notes-3/pdf/) |
+
+Rebuild: `python3 scripts/condense_notes3_ignou.py` → `./scripts/build-notes3-pdfs.sh ignou`
 
 ## 12-week schedule
 
