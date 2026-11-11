@@ -17,3 +17,12 @@ Condensed from **notes-2** (48 EMRC modules) for concept-style exams: key-term t
 python3 scripts/condense_notes3_from_notes2.py infosec
 ./scripts/build-notes3-pdfs.sh infosec
 ```
+
+## Worked numericals
+
+Step-by-step calculations flattened out of notes-3 are restored in:
+
+- [`numericals.md`](numericals.md)
+- [`../../final pdf/05-information-security-cec-numericals.pdf`](../../final%20pdf/05-information-security-cec-numericals.pdf)
+
+Covers M06 TCP window, M07 stop-and-wait \(U\), M09–M10 addressing/CIDR, M11 seq/ACK, M12 binary/CIDR blocks, M13 UDP hex dump, M14 AH length.
