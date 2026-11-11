@@ -19,3 +19,14 @@ Condensed from **notes-2** for concept-style exams: learning focus, key comparis
 python3 scripts/condense_notes3_from_notes2.py genai
 ./scripts/build-notes3-pdfs.sh genai
 ```
+
+## Exam-filtered pack
+
+For the mid-sem mark map that **excludes weeks 4, 6, 8, 12**, see:
+
+- Markdown: [`exam-syllabus-kept-weeks.md`](exam-syllabus-kept-weeks.md)
+- PDF: [`../../final pdf/03-generative-ai-llms-exam-kept-weeks.pdf`](../../final%20pdf/03-generative-ai-llms-exam-kept-weeks.pdf)
+
+```bash
+python3 scripts/build_genai_exam_final_pdf.py
+```
