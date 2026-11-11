@@ -13,7 +13,7 @@ NPTELnotes is a self-contained reference library — not a video mirror or cours
 
 All video links point to public NPTEL, SWAYAM, or YouTube sources. No registration is required.
 
-Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy are in [`courses/01-cyber-security-and-privacy/transcripts/`](courses/01-cyber-security-and-privacy/transcripts/) and mirrored as PDFs in [`Cyber Security and Privacy/`](Cyber%20Security%20and%20Privacy/). Transcript-grounded notes (notes-2) are in [`courses/01-cyber-security-and-privacy/notes-2/`](courses/01-cyber-security-and-privacy/notes-2/) with PDF copies in [`Cyber Security and Privacy/notes 2/`](Cyber%20Security%20and%20Privacy/notes%202/).
+Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy are in [`courses/01-cyber-security-and-privacy/transcripts/`](courses/01-cyber-security-and-privacy/transcripts/) and mirrored as PDFs in [`Cyber Security and Privacy/`](Cyber%20Security%20and%20Privacy/). Transcript-grounded notes (notes-2) are in [`courses/01-cyber-security-and-privacy/notes-2/`](courses/01-cyber-security-and-privacy/notes-2/) with PDF copies in [`Cyber Security and Privacy/notes 2/`](Cyber%20Security%20and%20Privacy/notes%202/). Concept exam packs (notes-3) live beside notes-2 in each course folder (CSP also mirrored to [`Cyber Security and Privacy/notes 3/`](Cyber%20Security%20and%20Privacy/notes%203/)).
 
 ## At a glance
 
@@ -21,18 +21,18 @@ Per-video lecture transcripts (markdown + PDF) for Cyber Security and Privacy ar
 |---|---|
 | **Courses** | 5 |
 | **Total lectures** | 210 |
-| **PDF volumes** | 32 notes volumes (+ transcript PDFs) |
+| **PDF volumes** | 32 notes volumes + notes-3 concept packs (+ transcript PDFs) |
 | **Formats** | Markdown (source) + PDF (export) |
 
 ## Courses
 
 | # | Course | Lectures | PDF split | Folder |
 |---|--------|----------|-----------|--------|
-| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 transcripts + 5 notes-2 | `courses/01-cyber-security-and-privacy/` |
-| 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 5 × 10 + 1 × 12 | `courses/02-ethical-hacking/` |
-| 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 condensed + 64 video-grounded | 4 + 6 | `courses/03-generative-ai-llms/` |
+| 1 | [Cyber Security and Privacy](courses/01-cyber-security-and-privacy/) | 40 | 4 × 10 + 46 transcripts + 5 notes-2 + 5 notes-3 | `courses/01-cyber-security-and-privacy/` |
+| 2 | [Ethical Hacking](courses/02-ethical-hacking/) | 62 | 6 notes + 6 notes-2 + 6 notes-3 | `courses/02-ethical-hacking/` |
+| 3 | [Generative AI & LLMs](courses/03-generative-ai-llms/) | 36 condensed + 64 video-grounded | 4 + 6 notes-2 + 6 notes-3 | `courses/03-generative-ai-llms/` |
 | 4 | [Cyber Security Tools (IGNOU)](courses/04-cyber-security-tools-ignou/) | 36 | 4 × 9 | `courses/04-cyber-security-tools-ignou/` |
-| 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 + 48 playlist | 4 × 9 (SWAYAM) + 4 × 12 (notes-2) | `courses/05-information-security-cec/` |
+| 5 | [Information Security (CEC)](courses/05-information-security-cec/) | 36 + 48 playlist | 4 × 9 (SWAYAM) + 4 notes-2 + 4 notes-3 | `courses/05-information-security-cec/` |
 
 ### Official course links
 

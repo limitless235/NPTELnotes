@@ -39,6 +39,7 @@ By the end of this course, you should be able to:
 │   ├── lectures/          # One file per module
 │   ├── vol-01.md … vol-04.md
 │   └── pdf/
+├── notes-3/               # Concept exam notes (slim PDFs from notes-2)
 └── transcripts/           # Per-video YouTube transcripts + PDFs (48 videos)
     ├── README.md
     ├── M00-….md … M47-….md
