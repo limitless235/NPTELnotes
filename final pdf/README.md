@@ -10,6 +10,19 @@ One printable PDF per course, concatenating every notes-3 volume **in order** wi
 | `03-generative-ai-llms-exam-kept-weeks.pdf` | **Exam map only** — weeks 1,2,3,5,7,9,10,11 (drops 4,6,8,12) |
 | `04-cyber-security-tools-ignou-notes-3.pdf` | `courses/04-…/notes-3/pdf/vol-01…04` |
 | `05-information-security-cec-notes-3.pdf` | `courses/05-…/notes-3/pdf/vol-01…04` |
+| `05-information-security-cec-numericals.pdf` | **Worked numericals** restored (TCP window, CIDR, hex dump, etc.) |
+
+## Info Sec numericals
+
+Concept notes-3 dropped step-by-step calculations. Rebuild the companion pack:
+
+```bash
+pandoc courses/05-information-security-cec/notes-3/numericals.md \
+  -o "final pdf/05-information-security-cec-numericals.pdf" \
+  --pdf-engine=xelatex -V mainfont="DejaVu Serif" --toc
+```
+
+Markdown source: `courses/05-information-security-cec/notes-3/numericals.md`
 
 ## GenAI exam PDF
 
