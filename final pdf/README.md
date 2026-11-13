@@ -9,8 +9,19 @@ One printable PDF per course, concatenating every notes-3 volume **in order** wi
 | `03-generative-ai-llms-notes-3.pdf` | `courses/03-…/notes-3/pdf/vol-01…06` (full course) |
 | `03-generative-ai-llms-exam-kept-weeks.pdf` | **Exam map only** — weeks 1,2,3,5,7,9,10,11 (drops 4,6,8,12) |
 | `04-cyber-security-tools-ignou-notes-3.pdf` | `courses/04-…/notes-3/pdf/vol-01…04` |
-| `05-information-security-cec-notes-3.pdf` | `courses/05-…/notes-3/pdf/vol-01…04` |
-| `05-information-security-cec-numericals.pdf` | **Worked numericals** restored (TCP window, CIDR, hex dump, etc.) |
+| `05-information-security-cec-notes-3.pdf` | Ultra-short concept pack (`notes-3`) |
+| `05-information-security-cec-exam-readable.pdf` | **Exam-readable** full concepts — answer-ready definitions + explanations |
+| `05-information-security-cec-numericals.pdf` | **Worked numericals** (TCP window, CIDR, hex dump, etc.) |
+
+## Info Sec exam-readable pack
+
+Denser than notes-3, clearer than transcript notes-2. Rebuild:
+
+```bash
+python3 scripts/build_infosec_exam_readable_pdf.py
+```
+
+Sources: `courses/05-information-security-cec/notes-exam/`
 
 ## Info Sec numericals
 
