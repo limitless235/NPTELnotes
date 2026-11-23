@@ -8,6 +8,7 @@ One printable PDF per course, concatenating every notes-3 volume **in order** wi
 | `02-ethical-hacking-notes-3.pdf` | `courses/02-…/notes-3/pdf/vol-01…06` |
 | `03-generative-ai-llms-notes-3.pdf` | `courses/03-…/notes-3/pdf/vol-01…06` (full course) |
 | `03-generative-ai-llms-exam-kept-weeks.pdf` | **Exam map only** — weeks 1,2,3,5,7,9,10,11 (drops 4,6,8,12) |
+| `03-generative-ai-llms-numericals.pdf` | **Worked numericals** (~50% of paper) — optimizers, conv, VAE, DDPM, attention + PE |
 | `04-cyber-security-tools-ignou-notes-3.pdf` | `courses/04-…/notes-3/pdf/vol-01…04` |
 | `05-information-security-cec-notes-3.pdf` | Ultra-short concept pack (`notes-3`) |
 | `05-information-security-cec-exam-readable.pdf` | **Exam-readable** full concepts — answer-ready definitions + explanations |
@@ -44,6 +45,19 @@ python3 scripts/build_genai_exam_final_pdf.py
 ```
 
 Markdown source: `courses/03-generative-ai-llms/notes-3/exam-syllabus-kept-weeks.md`
+
+## GenAI numericals
+
+Step-by-step formulas for the five exam sets (SGD/AdaGrad, convolution, VAE, DDPM, self-attention) plus AE / pooling / PE extras:
+
+```bash
+pandoc courses/03-generative-ai-llms/notes-3/numericals.md \
+  -o "final pdf/03-generative-ai-llms-numericals.pdf" \
+  --pdf-engine=xelatex -V mainfont="DejaVu Serif" \
+  -V geometry:margin=1in --toc -V colorlinks=true
+```
+
+Markdown source: `courses/03-generative-ai-llms/notes-3/numericals.md`
 
 ## Full combined rebuild
 
